@@ -7,6 +7,9 @@ import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { CreateAccountScreenComponent } from './create-account-screen/create-account-screen.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
