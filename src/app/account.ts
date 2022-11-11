@@ -1,6 +1,6 @@
 export interface Account {
-    firstN: string;
-    lastN: string;
-    email: string;
-    password: string;
+    firstN: String;
+    lastN: String;
+    email: String;
+    password: String;
   }

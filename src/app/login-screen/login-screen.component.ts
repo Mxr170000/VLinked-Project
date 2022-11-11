@@ -13,24 +13,29 @@ inputEmail: String = "";
 inputPassword: String = "";
 accountNotExist: Boolean = false;
 accounts: Account[] = [];
+path = "/home";
 
-constructor(private usersListService : UsersListService){}
+constructor(private usersListService : UsersListService){this.accounts = this.usersListService.accounts}
 
 ngOnInit()
 {
-   this.usersListService.getJSON().subscribe(data => {
-        this.accounts = data;
-    });
-    
+  console.log(this.accounts);
 } 
+
+
 
   checkAccount()
   {
     this.inputEmail! = (<HTMLInputElement>document.getElementById("inputEmail")).value;
     this.inputPassword! = (<HTMLInputElement>document.getElementById("inputPassword")).value;
+    if(this.accounts.length == 0)
+    {
+      this.accountNotExist = true;
+      this.path =  "/login";
+    }
     for(let i = 0; i < this.accounts.length; i++)
     {
-      if(this.inputEmail === this.accounts[i].email && this.inputPassword === this.accounts[i].password)
+      if(this.inputEmail == this.accounts[i].email && this.inputPassword == this.accounts[i].password)
       {
         this.accountNotExist = false;
         break;
@@ -47,11 +52,12 @@ ngOnInit()
       this.inputEmail = "";
       this.inputPassword = "";
       this.accountNotExist = false;
-      window.location.href='http://localhost:4200/home';
-
+      this.path =  "/home";
     }
-
-    console.log("I'm getting clicked")
+    else
+    {
+      this.path =  "/login";
+    }
   }
 
 }

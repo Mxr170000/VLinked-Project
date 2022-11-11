@@ -10,26 +10,27 @@
         <h1 class="title"> Create Account </h1>
         <label for="exampleFormControlInput1" class="form-label" style="padding-left: 30%;  padding-top: 4%; font-size: 20px;">First Name</label>
         <div style="padding-left: 30%; width: 61%; padding-top: 5px;" >
-            <input type="first-name" class="form-control" style=" width: 100%; height: 40px; font-size: 16px; font-style: italic;" id="exampleFormControlInput1" placeholder="John">
+            <input type="text" class="form-control" style=" width: 100%; height: 40px; font-size: 16px; font-style: italic;" id="first-name" placeholder="John">
         </div>
         <label for="exampleFormControlInput1" class="form-label" style="padding-left: 30%; padding-top: 25px; font-size: 20px;">Last Name</label>
         <div style="padding-left: 30%; width: 61%; padding-top: 5px;" >
-            <input type="last-name" class="form-control" style=" width: 100%; height: 40px; font-size: 16px; font-style: italic;" id="exampleFormControlInput1" placeholder="Adams">
+            <input type="text" class="form-control" style=" width: 100%; height: 40px; font-size: 16px; font-style: italic;" id="last-name" placeholder="Adams">
         </div>
         <label for="exampleFormControlInput1" class="form-label" style="padding-left: 30%; padding-top: 25px; font-size: 20px;">Email</label>
         <div style="padding-left: 30%; width: 61%; padding-top: 5px;" >
-            <input type="email" class="form-control" style=" width: 100%; height: 40px; font-size: 16px; font-style: italic;" id="exampleFormControlInput1" placeholder="name@example.com">
+            <input type="text" class="form-control" style=" width: 100%; height: 40px; font-size: 16px; font-style: italic;" id="email" placeholder="name@example.com">
         </div>
         <label for="exampleFormControlInput1" class="form-label" style="padding-left: 30%; font-size: 20px; padding-top: 25px;">Password</label>
         <div style="padding-left: 30%; width: 61%; padding-top: 5px;" >
-            <input type="password" class="form-control" style=" width: 100%; height: 40px; font-size: 16px; font-style: italic;" id="exampleFormControlInput1" placeholder="*********">
+            <input type="text" class="form-control" style=" width: 100%; height: 40px; font-size: 16px; font-style: italic;" id="password" placeholder="*********">
         </div>
         <div style="padding-left: 30%; width: 61%; padding-top: 30px;" >
-            <a routerLink="/home"><button class="home-button" > Create Account </button></a>
+            <a routerLink="{{path}}"><button class="home-button" (click)="addAccount()"> Create Account </button></a>
         </div>
         <div style="display: flex; flex-direction: row; padding-left: 30%;">
             <p style="font-weight: 200; font-style:italic; font-size:14px;">Already have an account?</p>
             <a routerLink="/login" style="margin: left; font-weight: 600; font-style:italic; font-size:14px; padding-left: 5px;"> Log In </a>
-        </div>        
+        </div>   
+        <div class="error-account" *ngIf="fieldNotFilled" > All Fields Have Not Been Filled. </div>        
     </div>
 </div>

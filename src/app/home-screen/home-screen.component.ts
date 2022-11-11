@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersListService } from '../users-list.service';
 
 @Component({
   selector: 'app-home-screen',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeScreenComponent implements OnInit {
 
-  constructor() { }
+  constructor(private usersListService : UsersListService) { }
 
   ngOnInit(): void {
+    console.log(this.usersListService.accounts);
   }
 
 }
