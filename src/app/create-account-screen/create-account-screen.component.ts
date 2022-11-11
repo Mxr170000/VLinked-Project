@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-account-screen.component.scss']
 })
 export class CreateAccountScreenComponent implements OnInit {
-
+  
+  firstNameAutofilled: boolean = false;
+  lastNameAutofilled: boolean = false;
+  
   constructor() { }
 
   ngOnInit(): void {

@@ -1,4 +1,14 @@
-// Div class
+.body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    padding-right: -100px;
+    margin-left: 8px;
+    margin-top: 8px;
+    height: 100vh;
+}
+
 .header {
     display: flex;
     flex-direction: row;
@@ -7,35 +17,45 @@
     padding-top: 20px;
     padding-bottom: 8px;
 }
-.body {
+.search-bar {
     display: flex;
     flex-direction: row;
-    width: 100%;
 }
-.text-side {
-    width: 45%;
+.bottom-text {
     display: flex;
     flex-direction: column;
-    margin-left: 10%;
-    margin-top: 4%;
+    width: 100%;
+    padding-left: 10%;
+    padding-top: 2.5%;
 }
-.image-side {
-    width: 55%;
-}
-
-.image-side img{
-    margin-top: 50px;
-    margin-left: 50px;
-    width: 600px;
-    height: 500px;
-}
-
-.button-below{
+.bottom-tabs {
     display: flex;
     flex-direction: row;
     width: 100%;
-    padding-top: 5%;
+    padding-top: 1%;
 }
+.highlighter {
+    width: 226px;
+    height: 7px;
+    background-color: #637CFF;
+    border-radius: 5px 5px 0px 0px;
+    margin-top: -5px;
+}
+.bottom-section {
+    width: 100vw;
+    height: 57vh;
+    margin-top: 10px;
+    background-color: #DAF4FF;
+    border-radius: 40px 40px 0px 0px;
+}
+
+// Navigation
+.button-location{
+    margin-top: 1px;
+    margin-left: 24%;
+}
+
+
 // Anchors
 .jobs-link {
     color: #3563E9;
@@ -55,12 +75,6 @@
     cursor: pointer;
 }
 
-// Navigation
-.button-location{
-    margin-top: 1px;
-    margin-left: 24%;
-}
-
 // Header
 .trade-mark-blue {
     font-size: 32px;
@@ -71,36 +85,22 @@
     font-size: 32px;
     font-weight: 400;
     color: #62B544;
-    margin-left: 4%;
+    margin-left: 3.5%;
 }
-.top-text{
-    font-size: 64px;
+.progress-text{
+    font-size: 28px;
     font-weight: 400;
-    padding-top: 5%;
-    color: #3563E9;
+    color: black;
 }
-.bottom-text{
-    padding-top: 5%;
+.tab-text{
     font-size: 32px;
     font-weight: 600;
     color: black;
-    line-height: 50px;
 }
-// For the button clicking
-.signup {
-    background-color: white;
-    border: 2px solid #3563E9;
-    color: #3563E9;
-    padding: 6px 26px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
 
-  .login {
+
+// Button
+.login {
     background-color: #3563E9;
     border: none;
     color: white;
@@ -113,22 +113,7 @@
     margin-left: 10px;
     cursor: pointer;
   } 
-
-  .signup-bottom {
-    background-color: rgb(225, 225, 225);
-    border: none;
-    color: #3563E9;
-    padding: 8px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 5px;
-    box-shadow: 0 4px 2px -2px gray;
-    cursor: pointer;
-  }
-
-  .login-bottom {
+.search{
     background-color: #3563E9;
     border: none;
     color: white;
@@ -138,7 +123,6 @@
     display: inline-block;
     font-size: 16px;
     border-radius: 5px;
-    margin-left: 40px;
-    box-shadow: 0 4px 2px -2px gray;
+    margin-left: 10px;
     cursor: pointer;
   } 

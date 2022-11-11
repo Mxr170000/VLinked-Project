@@ -1,20 +1,24 @@
 <div class="header">
     <h1 class="trade-mark-green"> V </h1>
     <h1 class="trade-mark-blue"> Linked </h1>
-    <a class="jobs-link"> Jobs </a>
-    <a class="resume-link"> Resume Builder </a>
+    <a class="jobs-link" style="text-decoration: none;"> Jobs </a>
+    <a class="resume-link" style="text-decoration: none;"> Resume Builder </a>
     <nav class="button-location">
-        <a routerLink="/login"><button class="signup" > SignUp </button></a>
-        <a routerLink="/signup"><button class="login" > LogIn </button></a>
+        <a routerLink="/signup"><button class="signup" > SignUp </button></a>
+        <a routerLink="/login"><button class="login" > LogIn </button></a>
     </nav>
 </div>
 <div class="body">
     <div class="text-side">
         <h1 class="top-text"> Looking For A Job? </h1>
         <h1 class="bottom-text"> Join the thousands of veterans that have found their dream job on VLinked. </h1>
+        <div class="button-below">
+            <a routerLink="/signup" ><button class="signup-bottom"> SignUp </button></a>
+            <a routerLink="/login"><button class="login-bottom"> LogIn </button></a>
+        </div>
     </div>
     <div class="image-side">
-        <img src="../../../src/images/Solution_2_D.jpg">
+        <img src="../../assets/images/Initial_Screen.jpg">
     </div>
 </div>
 <router-outlet></router-outlet>

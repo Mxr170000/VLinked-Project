@@ -7,16 +7,30 @@ import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { CreateAccountScreenComponent } from './create-account-screen/create-account-screen.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HomeScreenComponent } from './home-screen/home-screen.component';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
     InitialScreenComponent,
     LoginScreenComponent,
-    CreateAccountScreenComponent
+    CreateAccountScreenComponent,
+    HomeScreenComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
