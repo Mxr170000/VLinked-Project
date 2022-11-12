@@ -14,6 +14,7 @@ inputPassword: String = "";
 accountNotExist: Boolean = false;
 accounts: Account[] = [];
 path = "/home";
+logAccount: Account = {firstN:"", lastN:"", email:"", password:""};
 
 constructor(private usersListService : UsersListService){this.accounts = this.usersListService.accounts}
 
@@ -38,6 +39,7 @@ ngOnInit()
       if(this.inputEmail == this.accounts[i].email && this.inputPassword == this.accounts[i].password)
       {
         this.accountNotExist = false;
+        this.logAccount = this.accounts[i];
         break;
       }
       if(i + 1 == this.accounts.length)
@@ -47,6 +49,7 @@ ngOnInit()
     }
     if(!this.accountNotExist)
     {
+      this.usersListService.setCurAccount(this.logAccount);
       (<HTMLInputElement>document.getElementById("inputEmail")).value = "";
       (<HTMLInputElement>document.getElementById("inputPassword")).value = "";
       this.inputEmail = "";

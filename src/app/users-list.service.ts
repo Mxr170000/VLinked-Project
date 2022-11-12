@@ -3,13 +3,19 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
 import { Account } from './account';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UsersListService {
+  
+  currentAccount: Account = {firstN:"", lastN:"", email:"", password:""};
+
   accounts: Account[] = [];
 
   accountChange: Subject<Account> = new Subject<Account>();
+
+  currentChange: Subject<Account> = new Subject<Account>();
 
   constructor(private http: HttpClient) 
   {
@@ -22,6 +28,10 @@ export class UsersListService {
     this.accountChange.subscribe((value) => {
       this.accounts.push(value);
   });
+    this.accountChange.subscribe((value) => {
+      this.currentAccount = value;
+  });
+
     console.log(this.accounts);
 
   }
@@ -37,5 +47,10 @@ export class UsersListService {
   getAccounts(): Account[]
   {
     return this.accounts;
+  }
+
+  setCurAccount(currentAccount: Account): void
+  {
+    this.accountChange.next(currentAccount);
   }
 }

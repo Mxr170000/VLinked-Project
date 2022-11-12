@@ -4,8 +4,9 @@
         <h1 class="trade-mark-blue"> Linked </h1>
         <a class="jobs-link" style="text-decoration: none;"> Jobs </a>
         <a class="resume-link" style="text-decoration: none;"> Resume Builder </a>
+        <h1 class="account-name"> Hello, {{currentAccount.firstN}} {{currentAccount.lastN.substring(0,1)}}.</h1>
         <nav class="button-location">
-            <a routerLink="/"><button class="login" > Log Out </button></a>
+            <a routerLink="/" class="log-out">LogOut</a>
         </nav>
     </div>
     <div class="search-bar">
@@ -22,13 +23,16 @@
     <div class="bottom-text">
         <h1 class="progress-text"> My Progress </h1>
         <div class="bottom-tabs">
-            <h1 class="tab-text"> Suggested Jobs </h1>
-            <h1 class="tab-text" style="padding-left: 100px;"> Applied Jobs </h1>
+            <h1 class="tab-text" (click)="suggestedJobs()" style="cursor: pointer;"> Suggested Jobs </h1>
+            <h1 class="tab-text" style="padding-left: 100px; cursor: pointer;" (click)="appliedJobs()"> Applied Jobs </h1>
         </div>
-        <div class="highlighter">
+        <div *ngIf = "suggestedJobsClicked" class="highlighter">
+        </div>
+        <div *ngIf = "appliedJobsClicked" class="highlighter-applied" style="margin-left: 307px;">
         </div>
     </div>
     <div class="bottom-section">
-
+        <h1 class="suggested-jobs" *ngIf = "suggestedJobsClicked"> Currently Empty. Help us by applying to jobs now!</h1>
+        <h1 class="suggested-jobs" *ngIf = "appliedJobsClicked"> Currently Empty. Apply to jobs now!</h1>
     </div>
 </div>

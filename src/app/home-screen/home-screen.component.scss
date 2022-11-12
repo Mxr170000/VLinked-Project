@@ -14,7 +14,7 @@
   flex-direction: row;
   box-shadow: 0 2px 2px -2px gray;
   width: 100%;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-bottom: 8px;
 }
 .search-bar {
@@ -41,9 +41,16 @@
   border-radius: 5px 5px 0px 0px;
   margin-top: -5px;
 }
+.highlighter-applied {
+  width: 226px;
+  height: 7px;
+  background-color: #637cff;
+  border-radius: 5px 5px 0px 0px;
+  margin-top: -5px;
+}
 .bottom-section {
   width: 100vw;
-  height: 57vh;
+  height: 58vh;
   margin-top: 10px;
   background-color: #daf4ff;
   border-radius: 40px 40px 0px 0px;
@@ -51,8 +58,8 @@
 
 // Navigation
 .button-location {
-  margin-top: 1px;
-  margin-left: 24%;
+  padding-top: 7px;
+  padding-left: 3%;
 }
 
 // Anchors
@@ -95,6 +102,29 @@
   font-size: 32px;
   font-weight: 600;
   color: black;
+}
+.account-name {
+  padding-top: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #3563e9;
+  padding-left: 22%;
+}
+.suggested-jobs{
+  font-size: 32px;
+  font-weight: 600;
+  color: black;
+  padding-left: 10%;
+  padding-top: 2%;
+}
+
+// Anchor
+.log-out{
+  color: black;
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
 }
 
 // Button
