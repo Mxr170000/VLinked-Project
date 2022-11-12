@@ -8,6 +8,7 @@ import { CreateAccountScreenComponent } from './create-account-screen/create-acc
 import { AppRoutingModule } from './app-routing.module';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { JobsearchScreenComponent } from './jobsearch-screen/jobsearch-screen.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     InitialScreenComponent,
     LoginScreenComponent,
-    CreateAccountScreenComponent
+    CreateAccountScreenComponent,
+    JobsearchScreenComponent
   ],
   imports: [
     BrowserModule,
