@@ -23,18 +23,28 @@
     <div class="header__filename">
     </div>
     <div class="header__pdf-controls">
-      <button class="header__btn" >print</button>
-      <button class="header__btn" >download</button>
+      <button (click)="clickEvent()" type="button" class="btn header__btn btn-primary" id="liveToastBtn">Add to Profile</button>
+      
+      <button (click)="download()" class="header__btn" >download</button>
     </div>
   </div>
 </div>
   <!-- header template -->
 
 <!-- pdf-viewer section -->
-<div class="output-pdf-viewer">
-  <pdf-viewer></pdf-viewer>
+
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="toastmessage" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">VLinked</strong>
+      <button (click)="clickEvent()" type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Your Resume is sucessfully added to your profile
+    </div>
+  </div>
 </div>
-<!-- <div class="output-pdf-viewer">
+<div class="output-pdf-viewer">
   <pdf-viewer
     [src]="pdfSrc"
     [(page)]="pageVariable"
@@ -45,11 +55,10 @@
     [fit-to-page]="true"
     [autoresize]="true"
     [show-borders]="true"
-    [zoom-scale]="zoomScale"
     [zoom]="zoom"
     (after-load-complete)="afterLoadComplete($event)"
     #pdfViewer
   ></pdf-viewer>
 </div>
- -->
+ 
   <router-outlet></router-outlet>

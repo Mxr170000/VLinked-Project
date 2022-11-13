@@ -4,9 +4,9 @@ import { UsersListService } from '../users-list.service';
 import { PdfViewerModule, PdfViewerComponent, PDFDocumentProxy } from "ng2-pdf-viewer";
 //import * as pdfMake from "pdfmake/build/pdfmake";
 //import pdfFonts from "../../assets/vsf_fonts.js";
-//const pdfFonts = require("../../assets/vsf_fonts.js")
+const pdfFonts = require("../../assets/vsf_fonts.js")
 const pdfMake = require('pdfmake/build/pdfmake.js');
-import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+//import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { Margins } from 'pdfmake/interfaces';
 
 import { fonts, styles, defaultStyle } from "../../assets/utilities";
@@ -35,7 +35,7 @@ export class ResumeBuilderPg4Component implements OnInit {
   // Initialize variables required for the header and this component
   fileName = "test-document.pdf";
   // set zoom variables
-  zoom = 0.98; // default initial zoom value
+  zoom = 0.80; // default initial zoom value
   zoomMax = 2; // max zoom value
   zoomMin = 0.5; // min zoom value
   zoomAmt = 0.2; // stepping zoom values on button click
@@ -45,10 +45,39 @@ export class ResumeBuilderPg4Component implements OnInit {
   documentDefinition: object;
   generatedPDF: any ;
   pdfData:any;
-
-
+  mainskills:any;
+  skilldesc:any;
   constructor(private usersListService : UsersListService,private httpClient: HttpClient){
     this.accounts = this.usersListService.accounts
+    this.mainskills = ["Accounting or bookkeeping ",
+              "Data analysis",
+              "Data privacy — Cybersecurity",
+              "Enterprise resource planning ",
+              "Process automation",
+              "Adaptability ",
+              "Attention to detail ",
+              "Project management",
+              "Leadership",
+              "Multitasking",
+              "Positivity",
+              "Self-motivation",
+              "Time management ",
+              "Work ethic"
+              ];
+  this.skilldesc = ["Obtained this skill while doing the math class",
+    "Statistics and math and got experience with matlab",
+    "Did a high level analysis about network protocols",
+    "Resource planning learnt while working at HR",
+    "Automation learnt while working at a school project",
+    "Highly adaptable",
+    "Have concentrated on all the aspects of studies and job",
+    "Project management learnt while working at HR",
+    "Was a lead of a project",
+    "Well known in office for doing multiple tasks",
+    "Always keep the positive nature at workplace",
+    "Push myself to work all the time",
+    "Never missed a deadline",
+    "Always followed work ethics"]
   }
 
   ngOnInit(): void {
@@ -56,54 +85,23 @@ export class ResumeBuilderPg4Component implements OnInit {
     this.getData();
     console.log("Sreekar"+this.accounts)
     console.log(this.accounts)
-    // console.log(UsersListService.currentAccount);
-    // console.log(UsersListService.accounts);
+    
   }
 
   download(): void {
     const blob = new Blob([this.pdfSrc], { type: "application/pdf" });
 
     const data = window.URL.createObjectURL(blob);
-    const link = document.createElement("a"); // creating an anchor tag
-    link.href = data; // setting href value to anchor
-    link.download = this.fileName; // giving the download attr to the anchor with the filename that we are giving
-    link.click(); // fake click using the js to download it.
-
-    // For firefox it is necessary to delay revoking the ObjectURl
+    const link = document.createElement("a"); 
+    link.href = data; 
+    link.download = this.fileName;
+    link.click(); 
     setTimeout(() => {
       window.URL.revokeObjectURL(data);
     }, 100);
   }
 
-  // pdfSrc value we are taking from the pdfmake generate function in buffer type so currently this willnot work
-  // after the pdf is generated it will work
-  // Print functionlaity of the pdf
   print(): void {
-    // // Remove previously added iframes
-    // const prevFrames = document.querySelectorAll('iframe[name="pdf-frame"]');
-    // if (prevFrames.length) {
-    //   prevFrames.forEach((item) => item.remove());
-    // }
-    // // just like download , we are using the blob
-    // const blob = new Blob([this.pdfSrc], { type: "application/pdf" });
-    // const objectURl = URL.createObjectURL(blob);
-
-    // // create iframe element in dom
-    // const frame = document.createElement("iframe");
-    // frame.style.display = "none"; // hiding the iframe
-    // frame.src = objectURl; // setting the source for that iframe
-    // // appending this iframe to body
-    // document.body.appendChild(frame);
-    // frame.name = "pdf-frame";
-    // frame.focus();
-
-    // // in edge or IE we are using different methods to print
-    // if (this.isIE() || this.isEdge()) {
-    //   frame.contentWindow.document.execCommand("print", false, null);
-    // } else {
-    //   // all other browsers will use this method
-    //   frame.contentWindow.print();
-    // }
   }
 
   // to know the browser is IE or not
@@ -124,6 +122,20 @@ export class ResumeBuilderPg4Component implements OnInit {
 
   generatePDF(): void {
     // All the contents required goes here
+    let obj1 = JSON.parse(localStorage.getItem('pg1Data')|| '{}');
+    let obj2 = JSON.parse(localStorage.getItem('pg2Data')|| '{}');
+    let obj3 = JSON.parse(localStorage.getItem('pg3Data')|| '{}');
+    let pdfskills:string = "";
+    console.log("Testing at peaks");
+    console.log(obj3);
+    let activeOptions = new Set(obj2.activeOptions);
+    console.log(activeOptions);
+    for (var ind of activeOptions){
+          pdfskills +=this.mainskills[Number(ind) ]+": "+this.skilldesc[Number(ind)]+"\n ";
+    }
+    // if (pdfskills.length>3){
+    //   pdfskills = pdfskills.substring(0, pdfskills.length - 2);
+    // }
     this.documentDefinition = {
       info: {
         title: this.pdfData.title,
@@ -136,39 +148,51 @@ export class ResumeBuilderPg4Component implements OnInit {
       pageSize: "A4",
       pageOrientation: "landscape",
       pageMargins: [40, 60, 40, 60], // left, top, right, bottom margin values
-      margin: [20, 0, 40, 0] as Margins,
+      margin: [40, 60, 40, 60] as Margins,
+      /*{
+  {employer: "dasmbbmb", jobtitle: ",bjhbhj", activeOptions: ["3", "1", "2", "4", "7", "9"]}
+}*/
+
       content: [
         {
-          text: "Sample test to check the font",
+          text: "Basic Resume",
           style: "head", // normal text with custom font
+          alignment:"center"
         },
         {
-          text: "> Sample test to check the font",
-          
+          text: "Basic Information",
+          style: "head",
         },
         {
-          text: "> hfbsediuhfeibneidw ewqbqjwk.",
-          font: "Icomoon", // icon intgerated to the pdfmake document
-          fontSize: 18,
+          text: "\nName : "+obj1.firstname+" "+obj1.lastname +"\nAddress: "+obj1.address
+          +", "+obj1.city +", "+obj1.county+"\n Zipcode : "+obj1.zipcode+"\nEmail : "
+          +obj1.email+"\n Mobile Number : "+obj1.phnnumber,
         },
         {
-          text: "hfbsediuhfeibneidw ewqbqjwkwqdfjywgqh.",
-          font: "Icomoon", // icon intgerated to the pdfmake document
-          fontSize: 18,
+          text: "Education",
+          style: "head",
         },
         {
-          text: "Sample test to check the font",
-          style: "head", // normal text with custom font
+          text: "\nSchool : "+obj3.schoolname+"\nLocation : "+obj3.schoolcity
+          +"\State : "+obj3.schoolstate+"\nHighest Degree Obtained: "+obj3.degree,
         },
         {
-          text: "Sample test to check the font",
-          style: "head", // normal text with custom font
+          text: "Experience",
+          style: "head",
+        },
+
+        {
+          text: "\nEmployer : "+obj2.employer+"\nDesignation: "+obj2.jobtitle,
         },
         {
-          text: ">",
-          font: "Icomoon", // icon intgerated to the pdfmake document
-          fontSize: 18,
+          text: "Skills",
+          style: "head",
         },
+        {
+          text: pdfskills,
+        },
+
+        
       ], // it will be discussed later
       styles,
       defaultStyle,
@@ -189,5 +213,14 @@ export class ResumeBuilderPg4Component implements OnInit {
         this.generatePDF();
       }
     });
+  }
+  clickEvent():void{
+    let x = (<HTMLInputElement>document.getElementById("toastmessage"));
+    console.log(x.style.display);
+    if (x.style.display === "none" || x.style.display === "") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
   }
 }
