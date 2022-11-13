@@ -1,5 +1,5 @@
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-
+    
       <a href="/" class="px-5 d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
         <span class="trade-mark-green"> V </span><span class="trade-mark-blue"> Linked </span>
       </a>
@@ -16,15 +16,40 @@
           <a routerLink="/" class="log-out">LogOut</a>
         </div>
       </div>
-
+    
     </header>
-<div class="px-4 py-5 my-5 text-center">
-    <h1 class="display-5  fw-bold .text-primary ">Worried about Resume???</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Please enter the basic information about you and we will take care of the resume for you.</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Build Resume</button>
-      </div>
+<div class="row">
+  <div class="header__content-wrapper">
+    <div class="header__filename">
+    </div>
+    <div class="header__pdf-controls">
+      <button class="header__btn" >print</button>
+      <button class="header__btn" >download</button>
     </div>
   </div>
+</div>
+  <!-- header template -->
+
+<!-- pdf-viewer section -->
+<div class="output-pdf-viewer">
+  <pdf-viewer></pdf-viewer>
+</div>
+<!-- <div class="output-pdf-viewer">
+  <pdf-viewer
+    [src]="pdfSrc"
+    [(page)]="pageVariable"
+    [show-all]="true"
+    [stick-to-page]="true"
+    [render-text]="true"
+    [original-size]="false"
+    [fit-to-page]="true"
+    [autoresize]="true"
+    [show-borders]="true"
+    [zoom-scale]="zoomScale"
+    [zoom]="zoom"
+    (after-load-complete)="afterLoadComplete($event)"
+    #pdfViewer
+  ></pdf-viewer>
+</div>
+ -->
   <router-outlet></router-outlet>

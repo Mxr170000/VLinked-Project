@@ -18,7 +18,7 @@ import { ResumeBuilderPg1Component } from './resume-builder-pg1/resume-builder-p
 import { ResumeBuilderPg2Component } from './resume-builder-pg2/resume-builder-pg2.component';
 import { ResumeBuilderPg3Component } from './resume-builder-pg3/resume-builder-pg3.component';
 import { ResumeBuilderPg4Component } from './resume-builder-pg4/resume-builder-pg4.component';
-
+import { PdfViewerModule } from "ng2-pdf-viewer";
 
 @NgModule({
   declarations: [
@@ -41,7 +41,8 @@ import { ResumeBuilderPg4Component } from './resume-builder-pg4/resume-builder-p
     MatNativeDateModule,
     MatInputModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    PdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
