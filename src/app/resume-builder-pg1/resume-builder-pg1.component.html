@@ -1,0 +1,29 @@
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+
+      <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        <span class="trade-mark-green"> V </span><span class="trade-mark-blue"> Linked </span>
+      </a>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a routerLink="/home" class="h3  px-2 link-dark text-decoration-none">Jobs</a></li>
+        <li><a routerLink="/resume" class="h3  px-2 .text-primary text-decoration-none">Resume Builder</a></li>
+      </ul>
+      <div class="row">
+        <div class="col-sm">
+          <h1 class="account-name"> Hello, {{currentAccount.firstN}} {{currentAccount.lastN.substring(0,1)}}</h1>
+        </div>
+        <div class="col-sm">
+          <a routerLink="/" class="log-out">LogOut</a>
+        </div>
+      </div>
+
+    </header>
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5  fw-bold .text-primary ">Worried about Resume???</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Please enter the basic information about you and we will take care of the resume for you.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button routerLink="/resume2" type="button" class="btn btn-primary btn-lg px-4 gap-3">Build Resume</button>
+      </div>
+    </div>
+  </div>

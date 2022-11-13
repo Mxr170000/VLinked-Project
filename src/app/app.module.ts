@@ -13,6 +13,11 @@ import { MatInputModule } from '@angular/material/input';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ResumeBuilderComponent } from './resume-builder/resume-builder.component';
+import { ResumeBuilderPg1Component } from './resume-builder-pg1/resume-builder-pg1.component';
+import { ResumeBuilderPg2Component } from './resume-builder-pg2/resume-builder-pg2.component';
+import { ResumeBuilderPg3Component } from './resume-builder-pg3/resume-builder-pg3.component';
+import { ResumeBuilderPg4Component } from './resume-builder-pg4/resume-builder-pg4.component';
 
 
 @NgModule({
@@ -21,7 +26,12 @@ import { HttpClientModule } from '@angular/common/http';
     InitialScreenComponent,
     LoginScreenComponent,
     CreateAccountScreenComponent,
-    HomeScreenComponent
+    HomeScreenComponent,
+    ResumeBuilderComponent,
+    ResumeBuilderPg1Component,
+    ResumeBuilderPg2Component,
+    ResumeBuilderPg3Component,
+    ResumeBuilderPg4Component
   ],
   imports: [
     BrowserModule,
