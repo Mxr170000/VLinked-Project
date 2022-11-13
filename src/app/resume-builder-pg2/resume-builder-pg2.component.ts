@@ -15,27 +15,116 @@ export class ResumeBuilderPg2Component implements OnInit {
   accounts: Account[] = [];
   path = "/resume";
   logAccount: Account = {firstN:"", lastN:"", email:"", password:""};
+  activeOptions:any;
+  mainskills:any;
+  skills:any;
+  jobtitle:string = "";
+  employer:string = "";
 
   constructor(private usersListService : UsersListService){
     this.accounts = this.usersListService.accounts
+    this.activeOptions = new Set<number>();
+    this.mainskills = ["Accounting or bookkeeping ",
+              "Data analysis",
+              "Data privacy — Cybersecurity",
+              "Enterprise resource planning ",
+              "Process automation",
+              "Adaptability ",
+              "Attention to detail ",
+              "Project management",
+              "Leadership",
+              "Multitasking",
+              "Positivity",
+              "Self-motivation",
+              "Time management ",
+              "Work ethic"
+              ];
+
+    this.skills = {
+      "set1": [1,2,3,4],
+      "set2": [7,8,9,10],
+      "set3": [11,12,13],
+      "set4": [5,6,0,7],
+    };
+    if(localStorage.getItem('pg2Data')){
+      console.log(localStorage.getItem('pg2Data'));
+      let obj = JSON.parse(localStorage.getItem('pg2Data')|| '{}');
+      this.employer = obj.employer;
+      this.jobtitle = obj.jobtitle;
+      this.activeOptions = new Set(obj.activeOptions);
+    }
+    
+
   }
 
   ngOnInit(): void {
     this.currentAccount = this.usersListService.currentAccount;
     console.log("Sreekar"+this.accounts)
     console.log(this.accounts)
+    this.changeText();
     // console.log(UsersListService.currentAccount);
     // console.log(UsersListService.accounts);
   }
-
-  suggestedJobs():void{
-    this.suggestedJobsClicked = true;
-    this.appliedJobsClicked = false;
+  ngAfterViewInit() {
+    // assume dynamic HTML was added before
+    
+    // this.elRef.nativeElement.querySelector('button').addEventListener('click', 
+    // this.click.bind(this));
   }
+  
+  appendOptions():void{
+    var val = (<HTMLInputElement>document.getElementById("skills")).value;
+    console.log(this.skills.val)
+    var skillIndex = this.skills[val];
+    (<HTMLInputElement>document.getElementById("skilllist")).innerHTML = "";
+    for (var ind of skillIndex){
+      if (this.activeOptions.has(ind.toString())){
+        (<HTMLInputElement>document.getElementById("skilllist")).innerHTML+=
+          "<div class='form-group w-100 input-group mb-3'><div class='input-group-prepend'><button (click)='changeText($event)' value='"+ind+"' class='to-add-func btn btn-danger' type='button'>Remove</button></div><text class='input-group-text'>"+this.mainskills[ind]+"</text></div>";  
+      }
+      else{
+        (<HTMLInputElement>document.getElementById("skilllist")).innerHTML+=
+          "<div class='form-group w-100 input-group mb-3'><div class='input-group-prepend'><button (click)='changeText($event)' value='"+ind+"' class='to-add-func btn btn-success' type='button'>Add</button></div><text class='input-group-text'>"+this.mainskills[ind]+"</text></div>";  
+      }
+      
+    }
+    let x = this;
+    const btns = document.querySelectorAll('.to-add-func');
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function (e) {
+        if(btns[i].innerHTML=="Add"){
+          btns[i].innerHTML = "Remove";
+          btns[i].classList.remove('btn-success');
+          btns[i].classList.add('btn-danger');
+          x.activeOptions.add(btns[i].getAttribute('value'));
+          x.changeText();
+        }
+        else{
+          btns[i].innerHTML = "Add";
+          btns[i].classList.remove('btn-danger');
+          btns[i].classList.add('btn-success');
+          x.activeOptions.delete(btns[i].getAttribute('value'));
+          console.log(x.activeOptions);
+          x.changeText();
+        }
+      });
+    }
+  }
+  changeText():void{
 
-  appliedJobs():void{
-    this.appliedJobsClicked = true;
-    this.suggestedJobsClicked = false;
+    (<HTMLInputElement>document.getElementById("skillsummary")).innerHTML = "";
+    for (var ind of this.activeOptions){
+      (<HTMLInputElement>document.getElementById("skillsummary")).innerHTML+=
+          "<li>"+this.mainskills[ind]+"</li>";
+    }
+  }
+  readData(value: string):void{
+    var request: any = {};
+    request.employer = (<HTMLInputElement>document.getElementById("employer")).value;
+    request.jobtitle = (<HTMLInputElement>document.getElementById("jobtitle")).value;
+    request.activeOptions = [...this.activeOptions];
+    console.log(request);
+    localStorage.setItem('pg2Data', JSON.stringify(request));
   }
 
 

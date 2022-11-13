@@ -9,7 +9,7 @@
       </ul>
       <div class="row">
         <div class="px-5 col-sm">
-          <h1 class="account-name"> Hello, {{currentAccount.firstN}} {{currentAccount.lastN.substring(0,1)}}</h1>
+          <h1 class="account-name"> Hello {{currentAccount.firstN}} {{currentAccount.lastN.substring(0,1)}}</h1>
         </div>
         <div class="px-5 col-sm">
           <a routerLink="/" class="log-out">LogOut</a>
@@ -23,27 +23,45 @@
   <div class="row mb-4">
     <div class="col">
       <div class="form-outline">
-        <input type="text" placeholder="Employer" id="employer" class="form-control" />
+        <input type="text" value={{employer}} placeholder="Employer" id="employer" class="form-control" />
       </div>
     </div>
     <div class="col">
       <div class="form-outline">
-        <input type="text" placeholder="Job Title" id="jobtitle" class="form-control" />
+        <input type="text" value={{jobtitle}} placeholder="Job Title" id="jobtitle" class="form-control" />
       </div>
     </div>
   </div>
-  <div class="row mb-4">
-    <div class="col">
-      <div class="form-outline">
-        <textarea rows="12" type="text" placeholder="Job Description" id="jd" class="form-control" readonly></textarea>
-      </div>
-    </div>
-    <div class="col">
-      <div class="form-outline">
-        <textarea rows="12" type="text" placeholder="Job Title" id="jobtitle" class="form-control" ></textarea>
+  <div class="py-4 row mb-4">
+  <div class="col-lg-6 mb-2  align-items-stretch">
+    <div class="card">
+      <div class="card-body">
+        <ul id="skillsummary">
+
+        </ul>
       </div>
     </div>
   </div>
+  <div class="col-lg-6 mb-4  align-items-stretch">
+    <div class="card">
+      <div class="card-body">
+        <div class="col">
+          <select (change)="appendOptions()" class="form-select"  id="skills" aria-label="Default select example">
+            <option selected>Skills</option>
+            <option value="set1">Computer proficiency</option>
+            <option value="set2">Leadership experience</option>
+            <option value="set3">Communication skills</option>
+            <option value="set4">People skills</option>
+          </select>
+        </div>
+        <div class="col" id="skilllist">
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <!-- Text input -->
   <!-- Text input -->
@@ -57,11 +75,10 @@
     </div>
     <div class="col">
       <div class="form-outline">
-        <button routerLink="/resume3" type="button" class="btn btn-warning btn-lg px-4 gap-3">Save & Next</button>
+        <button (click)="readData('pg2')" routerLink="/resume3" type="button" class="btn btn-warning btn-lg px-4 gap-3">Save & Next</button>
       </div>
     </div>
   </div>
-
   
 </form>
 <router-outlet></router-outlet>
