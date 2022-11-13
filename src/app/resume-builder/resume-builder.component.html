@@ -1,6 +1,6 @@
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
 
-      <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+      <a href="/" class="px-5 d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
         <span class="trade-mark-green"> V </span><span class="trade-mark-blue"> Linked </span>
       </a>
 
@@ -9,10 +9,10 @@
         <li><a routerLink="/resume" class="h3  px-2 .text-primary text-decoration-none">Resume Builder</a></li>
       </ul>
       <div class="row">
-        <div class="col-sm">
+        <div class="px-5 col-sm">
           <h1 class="account-name"> Hello, {{currentAccount.firstN}} {{currentAccount.lastN.substring(0,1)}}</h1>
         </div>
-        <div class="col-sm">
+        <div class="px-5 col-sm">
           <a routerLink="/" class="log-out">LogOut</a>
         </div>
       </div>
@@ -27,3 +27,4 @@
       </div>
     </div>
   </div>
+  <router-outlet></router-outlet>

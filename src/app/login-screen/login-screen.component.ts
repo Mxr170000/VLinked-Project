@@ -21,6 +21,7 @@ constructor(private usersListService : UsersListService){this.accounts = this.us
 ngOnInit()
 {
   console.log(this.accounts);
+  //localStorage.setItem('accounts', this.accounts);
 } 
 
 

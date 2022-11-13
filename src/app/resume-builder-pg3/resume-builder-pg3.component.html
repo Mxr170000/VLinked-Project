@@ -1,6 +1,6 @@
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
 
-      <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+      <a href="/" class="px-5 d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
         <span class="trade-mark-green"> V </span><span class="trade-mark-blue"> Linked </span>
       </a>
 
@@ -9,21 +9,67 @@
         <li><a routerLink="/resume" class="h3  px-2 .text-primary text-decoration-none">Resume Builder</a></li>
       </ul>
       <div class="row">
-        <div class="col-sm">
+        <div class="px-5 col-sm">
           <h1 class="account-name"> Hello, {{currentAccount.firstN}} {{currentAccount.lastN.substring(0,1)}}</h1>
         </div>
-        <div class="col-sm">
+        <div class="px-5 col-sm">
           <a routerLink="/" class="log-out">LogOut</a>
         </div>
       </div>
 
     </header>
-<div class="px-4 py-5 my-5 text-center">
-    <h1 class="display-5  fw-bold .text-primary ">Worried about Resume???</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Please enter the basic information about you and we will take care of the resume for you.</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button routerLink="/resume4" type="button" class="btn btn-primary btn-lg px-4 gap-3">Build Resume</button>
+<form class="px-5 my-4 text-center">
+  <!-- 2 column grid layout with text inputs for the first and last names -->
+  <h2 class="display-6  fw-bold .text-primary ">Education</h2>
+  <div class="px-5 py-5 row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="text" placeholder="School Name" id="schoolname" class="form-control" />
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <input type="text" placeholder="City" id="schoolcity" class="form-control" />
       </div>
     </div>
   </div>
+  <div class="px-5 py-5 row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="text" placeholder="State" id="schoolstate" class="form-control" />
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <select class="form-select" id="degree" aria-label="Default select example">
+          <option selected>Degree</option>
+          <option value="masters">Master's Degree</option>
+          <option value="bach">Bachelors Degree</option>
+          <option value="other">Other</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Text input -->
+  <!-- Text input -->
+
+
+  <div class=" py-4 row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <button routerLink="/resume2" type="button" class="btn btn-secondary btn-lg px-4 gap-3">Back</button>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <button routerLink="/resume4" type="button" class="btn btn-warning btn-lg px-4 gap-3">Save & Next</button>
+      </div>
+    </div>
+  </div>
+
+  
+</form>
+<router-outlet></router-outlet>

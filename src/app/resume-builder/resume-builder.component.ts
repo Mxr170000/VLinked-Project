@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { Account } from '../account';
 import { UsersListService } from '../users-list.service';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-resume-builder',
@@ -27,7 +31,7 @@ export class ResumeBuilderComponent implements OnInit {
     // console.log(UsersListService.currentAccount);
     // console.log(UsersListService.accounts);
   }
-
+  
   suggestedJobs():void{
     this.suggestedJobsClicked = true;
     this.appliedJobsClicked = false;
