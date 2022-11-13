@@ -24,27 +24,27 @@
   <div class="px-5 py-5 row mb-4">
     <div class="col">
       <div class="form-outline">
-        <input type="text" placeholder="School Name" id="schoolname" class="form-control" />
+        <input type="text" value={{schoolname}} placeholder="School Name" id="schoolname" class="form-control" />
       </div>
     </div>
     <div class="col">
       <div class="form-outline">
-        <input type="text" placeholder="City" id="schoolcity" class="form-control" />
+        <input type="text" value={{schoolcity}} placeholder="City" id="schoolcity" class="form-control" />
       </div>
     </div>
   </div>
   <div class="px-5 py-5 row mb-4">
     <div class="col">
       <div class="form-outline">
-        <input type="text" placeholder="State" id="schoolstate" class="form-control" />
+        <input type="text" value={{schoolstate}} placeholder="State" id="schoolstate" class="form-control" />
       </div>
     </div>
     <div class="col">
       <div class="form-outline">
-        <select class="form-select" id="degree" aria-label="Default select example">
+        <select class="form-select" value={{degree}} id="degree" aria-label="Default select example">
           <option selected>Degree</option>
           <option value="masters">Master's Degree</option>
-          <option value="bach">Bachelors Degree</option>
+          <option value="bachelors">Bachelors Degree</option>
           <option value="other">Other</option>
           
         </select>
@@ -65,7 +65,7 @@
     </div>
     <div class="col">
       <div class="form-outline">
-        <button routerLink="/resume4" type="button" class="btn btn-warning btn-lg px-4 gap-3">Save & Next</button>
+        <button (click)="readData('pg3')" routerLink="/resume4" type="button" class="btn btn-warning btn-lg px-4 gap-3">Save & Next</button>
       </div>
     </div>
   </div>
