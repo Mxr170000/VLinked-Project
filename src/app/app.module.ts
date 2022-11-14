@@ -19,6 +19,8 @@ import { ResumeBuilderPg2Component } from './resume-builder-pg2/resume-builder-p
 import { ResumeBuilderPg3Component } from './resume-builder-pg3/resume-builder-pg3.component';
 import { ResumeBuilderPg4Component } from './resume-builder-pg4/resume-builder-pg4.component';
 import { PdfViewerModule } from "ng2-pdf-viewer";
+import { JobFinderComponent } from './job-finder/job-finder.component';
+import { JobFinderPg1Component } from './job-finder-pg1/job-finder-pg1.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { PdfViewerModule } from "ng2-pdf-viewer";
     ResumeBuilderPg1Component,
     ResumeBuilderPg2Component,
     ResumeBuilderPg3Component,
-    ResumeBuilderPg4Component
+    ResumeBuilderPg4Component,
+    JobFinderComponent,
+    JobFinderPg1Component
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,72 @@
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+
+    <a href="/" class="px-5 d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+      <span class="trade-mark-green"> V </span><span class="trade-mark-blue"> Linked </span>
+    </a>
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a routerLink="/home" class="h3  px-2 .text-primary text-decoration-none">Jobs</a></li>
+      <li><a routerLink="/resume" class="h3  px-2  link-dark text-decoration-none">Resume Builder</a></li>
+    </ul>
+    <div class="row">
+      <div class="px-5 col-sm">
+        <p class="account-name"> Hello {{currentAccount.firstN}} {{currentAccount.lastN.substring(0,1)}}</p>
+      </div>
+      <div class="px-5  col-sm">
+        <a routerLink="/" class="log-out">LogOut</a>
+      </div>
+    </div>
+
+  </header>
+<div class="px-4 py-5 my-5 text-center">
+  <h1 class="display-5  fw-bold .text-primary ">Welcome to job search with veteran-friendly companies</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">Please select industry and location</p>
+
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="input-group">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>What?</option>
+                    <option value="1">IT</option>
+                    <option value="2">Teaching</option>
+                    <option value="3">Finance</option>
+                    <option value="4">Healthcare</option>
+                    <option value="5">Blue collar jobs</option>
+                  </select>
+            </div>
+        </div>
+
+        <div class="col-sm-5">
+            <div class="input-group">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Where?</option>
+                    <option value="1">Dallas</option>
+                    <option value="2">San Antonio</option>
+                    <option value="3">Houston</option>
+                    <option value="4">Austin</option>
+                    <option value="5">Remote</option>
+                  </select>
+            </div>
+         
+        </div>
+
+        <div class="col-sm-1">
+            <button type="button" class="btn btn-primary">Search</button>
+        </div>
+
+    </div>
+
+    <div class="row justify-content-center">
+
+        <div class="card border-0" style="width: 40rem;">
+            <img src="https://careerswithmichelle.files.wordpress.com/2020/09/image-1.png" class="card-img-top" alt="...">
+          </div>
+
+    </div>
+
+
+
+  </div>
+</div>
+<router-outlet></router-outlet>
