@@ -1,0 +1,149 @@
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+
+    <a href="/" class="px-5 d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+      <span class="trade-mark-green"> V </span><span class="trade-mark-blue"> Linked </span>
+    </a>
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a routerLink="/home" class="h3  px-2 .text-primary text-decoration-none">Jobs</a></li>
+      <li><a routerLink="/resume" class="h3  px-2  link-dark text-decoration-none">Resume Builder</a></li>
+    </ul>
+    <div class="row">
+      <div class="px-5 col-sm">
+        <p class="account-name"> Hello <!--{{currentAccount.firstN}} {{currentAccount.lastN.substring(0,1)}}--> </p>
+      </div>
+      <div class="px-5  col-sm">
+        <a routerLink="/" class="log-out">LogOut</a>
+      </div>
+    </div>
+
+  </header>
+
+  <nav class="navbar navbar-light bg-primary">
+
+    <div class="row text-center">
+        <div class="col">
+            <div class="input-group">
+                <select class="form-select" aria-label="Select industry">
+                    <option selected>What?</option>
+                    <option value="1">IT</option>
+                    <option value="2">Teaching</option>
+                    <option value="3">Finance</option>
+                    <option value="4">Healthcare</option>
+                    <option value="5">Blue collar jobs</option>
+                  </select>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="input-group">
+                <select class="form-select" aria-label="Select location">
+                    <option selected>Where?</option>
+                    <option value="1">Dallas</option>
+                    <option value="2">San Antonio</option>
+                    <option value="3">Houston</option>
+                    <option value="4">Austin</option>
+                    <option value="5">Remote</option>
+                  </select>
+            </div>
+         
+        </div>
+
+        <div class="col-sm-1">
+            <button type="button" class="btn btn-dark">Search</button>
+        </div>
+
+    </div>
+
+    <div class="row text-center">
+
+        <div class="col-sm-3 mt-3">
+            <button type="button" class="btn btn-dark mt-3">Sort by date of the job posted</button>
+        </div>
+        
+        <div class="col-sm-3 mt-3">
+            <button type="button" class="btn btn-dark mt-3">Sort by by number of veterans hired</button>
+        </div>
+
+        <div class="col-sm-3 mt-3">
+            <button type="button" class="btn btn-dark mt-3">Sort by experience required</button>
+        </div>
+
+    </div>
+
+
+    
+  </nav>
+
+
+
+<div class="row justify-content-center">
+    <div class="col-sm-3">
+
+        <div class="card bg-primary mt-3" style="width: 15rem;">
+            <div class="card-body mt-3 ml-3 mr-3">
+                <h5 class="card-title text-light">5 jobs found!</h5>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="col-sm-4">
+
+        <div class="card mt-3" style="width: 18rem;">
+            <div class="card-body mt-4 mr-1">
+                <h5 class="card-title">Cyber Security engineer</h5>
+                <p class="card-text">at Verizon</p>
+                <p class="card-text">Dallas, TX</p>
+                <p class="card-text">It is our people who deliver powerful solutions. You can do more with us</p>
+                <button type="button" class="btn btn-primary">Apply</button>
+
+            </div>
+        </div>
+
+        <div class="card mt-3" style="width: 18rem;">
+            <div class="card-body mt-4 mr-1">
+                <h5 class="card-title">QA Engineer</h5>
+                <p class="card-text">at Walmart</p>
+                <p class="card-text">Remote</p>
+                <p class="card-text">We are proud of our diverse team and want more veterans to join us</p>
+                <button type="button" class="btn btn-primary">Apply</button>           
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-4">
+
+        <div class="card mt-3" style="width: 25rem;">
+            <div class="card-header">
+                <h5 class="card-title">Cyber Security engineer</h5>
+                <p class="card-text">at Verizon</p>
+                <p class="card-text">Dallas, TX</p>
+                <div class="text-end">
+                    <button type="button" class="btn btn-primary">Apply</button>  
+                </div>  
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <h5 class="card-title">Benefits</h5>
+                    <p>401k, health insurance, life insurance, PTO</p>
+                </li>
+                <li class="list-group-item">
+                    <h5 class="card-title">Full job description</h5>
+                    <p>Are you looking to elevate your cyber career? Your technical skills? Your opportunity for growth? Deloitte's Government and Public Services Cyber Practice (GPS Cyber Practice) is the place for you! Our GPS Cyber Practice helps organizations create a cyber minded culture and become stronger, faster, and more innovative. You will become part of a team that advises, implements, and manages solutions across five verticals: Strategy, Defense and Response; Identity; Infrastructure; Data; and Application Security. Our dynamic team offers opportunities to work with cutting-edge cyber security tools and grow both vertically and horizontally at an accelerated rate. Join our cyber team and elevate your career.</p>
+                </li>
+              </ul>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+</div>
+<router-outlet></router-outlet>
