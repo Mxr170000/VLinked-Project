@@ -50,7 +50,7 @@
 }
 .bottom-section {
   width: 100vw;
-  height: 58vh;
+  height: 80vh;
   margin-top: 10px;
   background-color: #daf4ff;
   border-radius: 40px 40px 0px 0px;
@@ -64,12 +64,13 @@
 
 // Anchors
 .jobs-link {
-  color: #3563e9;
+  color: black;
   font-size: 24px;
   font-weight: 600;
   margin-top: 3px;
   margin-left: 30%;
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .resume-link {
@@ -79,6 +80,7 @@
   margin-top: 3px;
   margin-left: 40px;
   cursor: pointer;
+  text-decoration: underline;
 }
 
 // Header
