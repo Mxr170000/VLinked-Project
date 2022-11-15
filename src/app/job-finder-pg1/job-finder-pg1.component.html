@@ -49,13 +49,13 @@
   <nav class="navbar navbar-light bg-primary">
     <div class="row mx-auto">
         <div class="col-sm-3 mt-3">
-            <button type="button" class="btn btn-dark mt-3">Sort by date of the job posted</button>
+            <button type="button" class="btn btn-dark mt-3"  (click)="sortByDate()">Sort by date of the job posted</button>
         </div>
         <div class="col-sm-3 mt-3">
-            <button type="button" class="btn btn-dark mt-3">Sort by by number of veterans hired</button>
+            <button type="button" class="btn btn-dark mt-3" (click)="sortByNumber()">Sort by by number of veterans hired</button>
         </div>
         <div class="col-sm-3 mt-3">
-            <button type="button" class="btn btn-dark mt-3">Sort by experience required</button>
+            <button type="button" class="btn btn-dark mt-3" (click)="sortByExperience()">Sort by experience required</button>
         </div>
     </div>
   </nav>
