@@ -22,8 +22,7 @@ export class JobFinderPg1Component implements OnInit {
       let obj = JSON.parse(localStorage.getItem('appliedJobs')|| '{}');
       this.appliedJobs = obj.appliedjobs;
     }
-    this.appendOptions();
-    this.count = jobs.length;
+    this.appendOptions()
   };
   appendOptions():void{
     this.count = 0;
