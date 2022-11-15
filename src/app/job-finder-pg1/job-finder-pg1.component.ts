@@ -23,7 +23,6 @@ export class JobFinderPg1Component implements OnInit {
       this.appliedJobs = obj.appliedjobs;
     }
     this.appendOptions();
-    this.count = jobs.length;
   };
   appendOptions():void{
     this.count = 0;
@@ -43,6 +42,7 @@ export class JobFinderPg1Component implements OnInit {
       }
       
     }
+    console.log(this.count);
     let x = this;
     const btns = document.querySelectorAll('.to-apply-func');
     for (let i = 0; i < btns.length; i++) {
@@ -59,7 +59,6 @@ export class JobFinderPg1Component implements OnInit {
     for (let i = 0; i < cards.length; i++) {
       console.log(String(cards[i].getAttribute('value')));
       cards[i].addEventListener('click', function (e) {
-        console.log('clicked the card');
         console.log(cards[i].getAttribute('value'));
         job = x.findId(String(cards[i].getAttribute('value')));
         (<HTMLInputElement>document.getElementById("job_desc")).innerHTML = "";
@@ -72,6 +71,18 @@ export class JobFinderPg1Component implements OnInit {
         } 
         text +="</div></div><ul class='list-group list-group-flush'><li class='list-group-item'><h5 class='card-title'>Benefits</h5><p>"+job.benefits+"</p></li><li class='list-group-item'><h5 class='card-title'>Full job description</h5><p>"+job.long_description+"</p></li></ul>";
         (<HTMLInputElement>document.getElementById("job_desc")).innerHTML += text;
+        const btns = (<HTMLInputElement>document.getElementById("job_desc")).querySelectorAll('.to-apply-func');
+        for (let i = 0; i < btns.length; i++) {
+          btns[i].addEventListener('click', function (e) {
+              btns[i].classList.remove('btn-primary');
+              btns[i].classList.remove('to-apply-func');
+              btns[i].classList.add('btn-secondary');
+              btns[i].innerHTML="Applied";
+              x.appliedJobs.push(btns[i].getAttribute('value'));
+              x.writeData();
+              x.changetoApplied();
+          });
+        };
       });
     }
   }
@@ -87,17 +98,18 @@ export class JobFinderPg1Component implements OnInit {
   writeData():void{
     var request: any = {};
     request.appliedjobs = this.appliedJobs
-    
     localStorage.setItem('appliedJobs', JSON.stringify(request));
   }
-  
-  // changeText():void{
-
-  //   (<HTMLInputElement>document.getElementById("skillsummary")).innerHTML = "";
-  //   for (var ind of this.activeOptions){
-  //     (<HTMLInputElement>document.getElementById("skillsummary")).innerHTML+=
-  //         "<li>"+this.mainskills[ind]+"</li>";
-  //   }
-  // }
+  changetoApplied():void{
+    const btns = document.querySelectorAll('.to-apply-func');
+    for (let i = 0; i < btns.length; i++) {
+      if(this.appliedJobs.includes(btns[i].getAttribute('value'))) {
+          btns[i].classList.remove('btn-primary');
+          btns[i].classList.remove('to-apply-func');
+          btns[i].classList.add('btn-secondary');
+          btns[i].innerHTML="Applied";
+      };
+    };
+  }
 
 }
