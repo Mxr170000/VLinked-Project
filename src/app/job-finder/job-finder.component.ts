@@ -2,6 +2,7 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Account } from '../account';
 import { UsersListService } from '../users-list.service';
+import {Router, ActivatedRoute, Params, NavigationExtras} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,9 @@ export class JobFinderComponent implements OnInit {
   path = "/resume";
   logAccount: Account = {firstN:"", lastN:"", email:"", password:""};
   nexturl: string = "/job2";
-  constructor(private usersListService : UsersListService){
+  ind: string="";
+  loc: string = "";
+  constructor(private usersListService : UsersListService, private router : Router){
     this.accounts = this.usersListService.accounts
   }
 
@@ -43,9 +46,15 @@ export class JobFinderComponent implements OnInit {
     this.suggestedJobsClicked = false;
   }
   geturl(){
-    this.nexturl = "/job2?industry="+(<HTMLInputElement>document.getElementById("industry")).value+"&location="+(<HTMLInputElement>document.getElementById("location")).value;
-    //console.log(this.nexturl);
-    window.location.href = this.nexturl;
+    this.ind = (<HTMLInputElement>document.getElementById("industry")).value || "";
+    this.loc = (<HTMLInputElement>document.getElementById("location")).value || "";
+    
+    let navigationExtras: NavigationExtras = {
+      queryParams: {'industry': this.ind,'location':this.loc},
+      fragment: ''
+    };
+    // Navigate to the login page with extras
+    this.router.navigate(['/job2'], navigationExtras); 
   }
   
 
