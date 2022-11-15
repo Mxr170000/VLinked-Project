@@ -112,4 +112,22 @@ export class JobFinderPg1Component implements OnInit {
     };
   }
 
+  sortByDate():void{
+    jobs.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+    this.appendOptions();
+  }
+
+  sortByNumber():void{
+
+    jobs.sort((a, b) => parseInt(b.num_veterans_hired) - parseInt(a.num_veterans_hired));
+    this.appendOptions();
+    
+  }
+
+  sortByExperience():void{
+    jobs.sort((a, b) => parseInt(a.experience) - parseInt(b.experience));
+    this.appendOptions();
+    
+  }
+
 }
