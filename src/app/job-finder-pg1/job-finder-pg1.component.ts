@@ -16,6 +16,12 @@ export class JobFinderPg1Component implements OnInit {
   ngOnInit(): void {
     
     console.log(jobs);
+    
+    if(localStorage.getItem('appliedJobs')){
+      console.log(localStorage.getItem('appliedJobs'));
+      let obj = JSON.parse(localStorage.getItem('appliedJobs')|| '{}');
+      this.appliedJobs = obj.appliedjobs;
+    }
     this.appendOptions();
     this.count = jobs.length;
   };
@@ -46,6 +52,7 @@ export class JobFinderPg1Component implements OnInit {
           btns[i].classList.add('btn-secondary');
           btns[i].innerHTML="Applied";
           x.appliedJobs.push(btns[i].getAttribute('value'));
+          x.writeData();
       });
     };
     const cards = document.querySelectorAll('.to-display-func');
@@ -77,7 +84,12 @@ export class JobFinderPg1Component implements OnInit {
         }
     }
   }
-
+  writeData():void{
+    var request: any = {};
+    request.appliedjobs = this.appliedJobs
+    
+    localStorage.setItem('appliedJobs', JSON.stringify(request));
+  }
   
   // changeText():void{
 
