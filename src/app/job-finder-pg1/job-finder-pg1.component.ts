@@ -7,7 +7,7 @@ import {jobs} from './job_data'
   styleUrls: ['./job-finder-pg1.component.scss']
 })
 export class JobFinderPg1Component implements OnInit {
-  appliedJobs : any = ["1","2"];
+  appliedJobs : any = [];
   constructor() { 
     
   }
