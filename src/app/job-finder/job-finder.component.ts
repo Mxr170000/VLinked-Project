@@ -20,7 +20,7 @@ export class JobFinderComponent implements OnInit {
   accounts: Account[] = [];
   path = "/resume";
   logAccount: Account = {firstN:"", lastN:"", email:"", password:""};
-
+  nexturl: string = "/job2";
   constructor(private usersListService : UsersListService){
     this.accounts = this.usersListService.accounts
   }
@@ -42,7 +42,12 @@ export class JobFinderComponent implements OnInit {
     this.appliedJobsClicked = true;
     this.suggestedJobsClicked = false;
   }
-
+  geturl(){
+    this.nexturl = "/job2?industry="+(<HTMLInputElement>document.getElementById("industry")).value+"&location="+(<HTMLInputElement>document.getElementById("location")).value;
+    //console.log(this.nexturl);
+    window.location.href = this.nexturl;
+  }
+  
 
 }
 

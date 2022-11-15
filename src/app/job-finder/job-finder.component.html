@@ -26,33 +26,33 @@
     <div class="row">
         <div class="col">
             <div class="input-group">
-                <select class="form-select" aria-label="Select industry">
-                    <option selected>What?</option>
-                    <option value="1">IT</option>
-                    <option value="2">Teaching</option>
-                    <option value="3">Finance</option>
-                    <option value="4">Healthcare</option>
-                    <option value="5">Blue collar jobs</option>
+                <select id="industry" class="form-select" aria-label="Select industry">
+                    <option value="" selected>What?</option>
+                    <option value="it">IT</option>
+                    <option value="teaching">Teaching</option>
+                    <option value="finance">Finance</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="bluecollarjobs">Blue collar jobs</option>
                   </select>
             </div>
         </div>
 
         <div class="col">
             <div class="input-group">
-                <select class="form-select" aria-label="Select location"> 
-                    <option selected>Where?</option>
-                    <option value="1">Dallas</option>
-                    <option value="2">San Antonio</option>
-                    <option value="3">Houston</option>
-                    <option value="4">Austin</option>
-                    <option value="5">Remote</option>
+                <select id = "location" class="form-select" aria-label="Select location"> 
+                    <option value="" selected>Where?</option>
+                    <option value="dallas">Dallas</option>
+                    <option value="sanantonio">San Antonio</option>
+                    <option value="houston">Houston</option>
+                    <option value="austin">Austin</option>
+                    <option value="remote">Remote</option>
                   </select>
             </div>
          
         </div>
 
         <div class="col-sm-1">
-            <button type="button" class="btn btn-primary">Search</button>
+            <button (click)="geturl()" type="button" class="btn btn-primary">Search</button>
         </div>
 
     </div>
