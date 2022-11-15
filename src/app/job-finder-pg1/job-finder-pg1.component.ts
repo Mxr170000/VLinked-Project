@@ -8,6 +8,7 @@ import {jobs} from './job_data'
 })
 export class JobFinderPg1Component implements OnInit {
   appliedJobs : any = [];
+  count:number = 0;
   constructor() { 
     
   }
@@ -16,20 +17,25 @@ export class JobFinderPg1Component implements OnInit {
     
     console.log(jobs);
     this.appendOptions();
+    this.count = jobs.length;
   };
   appendOptions():void{
-    
+    this.count = 0;
     (<HTMLInputElement>document.getElementById("job-cards")).innerHTML = "";
     for (var job of jobs){
-      var text = "<div class='card mt-3 to-display-func' value='"+job.id+"' style='width: 18rem;'><div class='card-body mt-4 mr-1'><h5 class='card-title'>"+job.title+"</h5><p class='card-text'>at "+job.company +"</p><p class='card-text'>"+job.location+"</p><p class='card-text'>"+job.short_description+"</p>"
-      if (this.appliedJobs.includes(job.id)){
-          text += "<button type='button' class='btn btn-secondary'>Applied</button>"
+      if (job.location == "Dallas"){
+        this.count+=1;
+        var text = "<div class='card mt-3 to-display-func' value='"+job.id+"' style='width: 18rem;'><div class='card-body mt-4 mr-1'><h5 class='card-title'>"+job.title+"</h5><p class='card-text'>at "+job.company +"</p><p class='card-text'>"+job.location+"</p><p class='card-text'>"+job.short_description+"</p>"
+        if (this.appliedJobs.includes(job.id)){
+            text += "<button type='button' class='btn btn-secondary'>Applied</button>"
+        }
+        else{
+            text += "<button type='button' value='"+job.id+"' class='btn btn-primary to-apply-func'>Apply</button>" 
+        }
+        text+=    "</div></div>";  
+        (<HTMLInputElement>document.getElementById("job-cards")).innerHTML+=text
       }
-      else{
-          text += "<button type='button' value='"+job.id+"' class='btn btn-primary to-apply-func'>Apply</button>" 
-      }
-      text+=    "</div></div>";  
-      (<HTMLInputElement>document.getElementById("job-cards")).innerHTML+=text
+      
     }
     let x = this;
     const btns = document.querySelectorAll('.to-apply-func');
