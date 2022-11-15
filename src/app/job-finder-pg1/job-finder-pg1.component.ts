@@ -1,4 +1,4 @@
-
+import {Router, ActivatedRoute, Params} from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {jobs} from './job_data'
 @Component({
@@ -9,7 +9,9 @@ import {jobs} from './job_data'
 export class JobFinderPg1Component implements OnInit {
   appliedJobs : any = [];
   count:number = 0;
-  constructor() { 
+  location: String = "";
+  industry: String = "";
+  constructor(private activatedRoute: ActivatedRoute) { 
     
   }
 
@@ -22,13 +24,18 @@ export class JobFinderPg1Component implements OnInit {
       let obj = JSON.parse(localStorage.getItem('appliedJobs')|| '{}');
       this.appliedJobs = obj.appliedjobs;
     }
+    this.activatedRoute.queryParams.subscribe(params => {
+        this.location =  params['location'];
+        this.industry =  params['industry'];
+      });
+    
     this.appendOptions();
   };
   appendOptions():void{
     this.count = 0;
     (<HTMLInputElement>document.getElementById("job-cards")).innerHTML = "";
     for (var job of jobs){
-      if (job.location == "Dallas"){
+      if ((this.location=="" || job.location.toLowerCase().replace(/\s/g, '') == this.location) && (this.industry=="" || job.industry.toLowerCase().replace(/\s/g, '') == this.industry)){
         this.count+=1;
         var text = "<div class='card mt-3 to-display-func' value='"+job.id+"' style='width: 18rem;'><div class='card-body mt-4 mr-1'><h5 class='card-title'>"+job.title+"</h5><p class='card-text'>at "+job.company +"</p><p class='card-text'>"+job.location+"</p><p class='card-text'>"+job.short_description+"</p>"
         if (this.appliedJobs.includes(job.id)){
