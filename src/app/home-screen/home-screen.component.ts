@@ -13,10 +13,21 @@ export class HomeScreenComponent implements OnInit {
   suggestedJobsClicked: Boolean = true;
   appliedJobsClicked: Boolean = false;
   jobsapplied:any;
+  user:string="";
   constructor(private usersListService : UsersListService) { }
 
   ngOnInit(): void {
-    this.currentAccount = this.usersListService.currentAccount;
+    if(localStorage.getItem('users')){
+        var obj:any = JSON.parse(localStorage.getItem('users')|| '{}');
+        
+        if(localStorage.getItem('currentUser')){
+           this.user = localStorage.getItem('currentUser')|| '';
+        }
+        if (this.user in obj){
+          this.currentAccount = obj[this.user];
+        }
+    }    
+    
     if(localStorage.getItem('appliedJobs')){
       console.log(localStorage.getItem('appliedJobs'));
       let obj = JSON.parse(localStorage.getItem('appliedJobs')|| '{}');

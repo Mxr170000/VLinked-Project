@@ -36,11 +36,9 @@ export class CreateAccountScreenComponent implements OnInit {
       var userCount = 1;
       var obj:any = {};
       const newAccount : Account = {firstN: this.firstN, lastN: this.lastN, email: this.email, password: this.password};
-      console.log(newAccount);
+      
       this.usersListService.addAccount(newAccount);
       if(localStorage.getItem('users')){
-        console.log("Initial List")
-        console.log(localStorage.getItem('users'));
         obj = JSON.parse(localStorage.getItem('users')|| '{}');
         userCount = Object.keys(obj).length+1;
         for (const key in obj) {
@@ -55,7 +53,7 @@ export class CreateAccountScreenComponent implements OnInit {
       obj['user'+userCount.toString()] = newAccount;
       
       localStorage.setItem('users', JSON.stringify(obj));
-      console.log(this.usersListService.accounts);
+      
       (<HTMLInputElement>document.getElementById("first-name")).value = "";
       (<HTMLInputElement>document.getElementById("last-name")).value = "";
       (<HTMLInputElement>document.getElementById("email")).value = "";

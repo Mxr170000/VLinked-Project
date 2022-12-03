@@ -24,14 +24,22 @@ export class JobFinderComponent implements OnInit {
   nexturl: string = "/job2";
   ind: string="";
   loc: string = "";
+  user:string = "";
   constructor(private usersListService : UsersListService, private router : Router){
     this.accounts = this.usersListService.accounts
   }
 
   ngOnInit(): void {
-    this.currentAccount = this.usersListService.currentAccount;
-    console.log("Sreekar"+this.accounts)
-    console.log(this.accounts)
+    if(localStorage.getItem('users')){
+        var obj:any = JSON.parse(localStorage.getItem('users')|| '{}');
+        
+        if(localStorage.getItem('currentUser')){
+           this.user = localStorage.getItem('currentUser')|| '';
+        }
+        if (this.user in obj){
+          this.currentAccount = obj[this.user];
+        }
+    }
     // console.log(UsersListService.currentAccount);
     // console.log(UsersListService.accounts);
   }

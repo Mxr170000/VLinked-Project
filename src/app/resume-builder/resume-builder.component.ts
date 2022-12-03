@@ -19,16 +19,22 @@ export class ResumeBuilderComponent implements OnInit {
   accounts: Account[] = [];
   path = "/resume";
   logAccount: Account = {firstN:"", lastN:"", email:"", password:""};
-
+  user:string = "";
   constructor(private usersListService : UsersListService){
     this.accounts = this.usersListService.accounts
   }
 
   ngOnInit(): void {
-    this.currentAccount = this.usersListService.currentAccount;
-    console.log("Sreekar"+this.accounts)
-    console.log(this.accounts)
-    // console.log(UsersListService.currentAccount);
+    if(localStorage.getItem('users')){
+        var obj:any = JSON.parse(localStorage.getItem('users')|| '{}');
+        
+        if(localStorage.getItem('currentUser')){
+           this.user = localStorage.getItem('currentUser')|| '';
+        }
+        if (this.user in obj){
+          this.currentAccount = obj[this.user];
+        }
+    }// console.log(UsersListService.currentAccount);
     // console.log(UsersListService.accounts);
   }
   

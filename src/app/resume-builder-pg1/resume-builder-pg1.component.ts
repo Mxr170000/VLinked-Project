@@ -23,7 +23,7 @@ export class ResumeBuilderPg1Component implements OnInit {
   country : string = "";
   email : string = "";
   phnumber : string = "";  
-  
+  user:string;
   constructor(private usersListService : UsersListService){
     this.accounts = this.usersListService.accounts
   }
@@ -36,7 +36,16 @@ export class ResumeBuilderPg1Component implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.currentAccount = this.usersListService.currentAccount;
+    if(localStorage.getItem('users')){
+        var obj:any = JSON.parse(localStorage.getItem('users')|| '{}');
+        
+        if(localStorage.getItem('currentUser')){
+           this.user = localStorage.getItem('currentUser')|| '';
+        }
+        if (this.user in obj){
+          this.currentAccount = obj[this.user];
+        }
+    }
     if(localStorage.getItem('pg1Data')){
       console.log(localStorage.getItem('pg1Data'));
       let obj = JSON.parse(localStorage.getItem('pg1Data')|| '{}');

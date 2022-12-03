@@ -30,24 +30,46 @@ ngOnInit()
   {
     this.inputEmail! = (<HTMLInputElement>document.getElementById("inputEmail")).value;
     this.inputPassword! = (<HTMLInputElement>document.getElementById("inputPassword")).value;
-    if(this.accounts.length == 0)
-    {
+    var obj:any = {};
+    var curUser:string = "";
+    this.accountNotExist = true;
+    if(localStorage.getItem('users')){
+        obj = JSON.parse(localStorage.getItem('users')|| '{}');
+        
+        for (const key in obj) {
+            var checkUser = obj[key];
+            if (this.inputEmail==checkUser['email'] && this.inputPassword != checkUser['password']){
+              alert('Wrong password entered')
+              this.accountNotExist = true;
+              break;
+            }
+            else if (this.inputEmail==checkUser['email'] && this.inputPassword == checkUser['password']){
+              this.accountNotExist = false;
+              this.logAccount = checkUser;
+              curUser = key;
+              break;
+            }
+        }
+        
+      }
+    else{
       this.accountNotExist = true;
       this.path =  "/login";
     }
-    for(let i = 0; i < this.accounts.length; i++)
-    {
-      if(this.inputEmail == this.accounts[i].email && this.inputPassword == this.accounts[i].password)
-      {
-        this.accountNotExist = false;
-        this.logAccount = this.accounts[i];
-        break;
-      }
-      if(i + 1 == this.accounts.length)
-      {
-        this.accountNotExist = true;
-      }
-    }
+    localStorage.setItem('currentUser', curUser);
+    // for(let i = 0; i < this.accounts.length; i++)
+    // {
+    //   if(this.inputEmail == this.accounts[i].email && this.inputPassword == this.accounts[i].password)
+    //   {
+    //     this.accountNotExist = false;
+    //     this.logAccount = this.accounts[i];
+    //     break;
+    //   }
+    //   if(i + 1 == this.accounts.length)
+    //   {
+    //     this.accountNotExist = true;
+    //   }
+    // }
     if(!this.accountNotExist)
     {
       this.usersListService.setCurAccount(this.logAccount);

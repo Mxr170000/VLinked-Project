@@ -20,8 +20,18 @@ export class ResumeBuilderPg2Component implements OnInit {
   skills:any;
   jobtitle:string = "";
   employer:string = "";
-
+  user:string = ""
   constructor(private usersListService : UsersListService){
+    if(localStorage.getItem('users')){
+        var obj:any = JSON.parse(localStorage.getItem('users')|| '{}');
+        
+        if(localStorage.getItem('currentUser')){
+           this.user = localStorage.getItem('currentUser')|| '';
+        }
+        if (this.user in obj){
+          this.currentAccount = obj[this.user];
+        }
+    }
     this.accounts = this.usersListService.accounts
     this.activeOptions = new Set<number>();
     this.mainskills = ["Accounting or bookkeeping ",

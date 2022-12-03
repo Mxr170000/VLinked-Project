@@ -47,8 +47,19 @@ export class ResumeBuilderPg4Component implements OnInit {
   pdfData:any;
   mainskills:any;
   skilldesc:any;
+  user:string = "";
   constructor(private usersListService : UsersListService,private httpClient: HttpClient){
     this.accounts = this.usersListService.accounts
+    if(localStorage.getItem('users')){
+        var obj:any = JSON.parse(localStorage.getItem('users')|| '{}');
+        
+        if(localStorage.getItem('currentUser')){
+           this.user = localStorage.getItem('currentUser')|| '';
+        }
+        if (this.user in obj){
+          this.currentAccount = obj[this.user];
+        }
+    }
     this.mainskills = ["Accounting or bookkeeping ",
               "Data analysis",
               "Data privacy — Cybersecurity",

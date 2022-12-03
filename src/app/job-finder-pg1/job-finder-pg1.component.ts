@@ -1,6 +1,7 @@
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {jobs} from './job_data'
+import { Account } from '../account';
 @Component({
   selector: 'app-job-finder-pg1',
   templateUrl: './job-finder-pg1.component.html',
@@ -14,13 +15,24 @@ export class JobFinderPg1Component implements OnInit {
   sorta:Boolean = true;
   sortb:Boolean = true;
   sortc:Boolean = true;
+  user:string = "";
+  currentAccount: Account = {firstN:"", lastN:"", email:"", password:""};
   constructor(private activatedRoute: ActivatedRoute) { 
     
   }
 
   ngOnInit(): void {
     
-    console.log(jobs);
+    if(localStorage.getItem('users')){
+        var obj:any = JSON.parse(localStorage.getItem('users')|| '{}');
+        
+        if(localStorage.getItem('currentUser')){
+           this.user = localStorage.getItem('currentUser')|| '';
+        }
+        if (this.user in obj){
+          this.currentAccount = obj[this.user];
+        }
+    }
     
     if(localStorage.getItem('appliedJobs')){
       console.log(localStorage.getItem('appliedJobs'));
