@@ -136,6 +136,12 @@ export class ResumeBuilderPg2Component implements OnInit {
     console.log(request);
     localStorage.setItem('pg2Data', JSON.stringify(request));
   }
-
+  logout():void{
+    var user = localStorage.getItem('currentUser');
+    localStorage.removeItem('pg1Data');
+    localStorage.removeItem('pg2Data');
+    localStorage.removeItem('pg3Data');
+    localStorage.removeItem('currentUser');
+  }
 
 }

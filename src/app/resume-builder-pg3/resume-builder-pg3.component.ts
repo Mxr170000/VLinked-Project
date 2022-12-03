@@ -66,5 +66,12 @@ export class ResumeBuilderPg3Component implements OnInit {
     request.degree = (<HTMLInputElement>document.getElementById("degree")).value;
     localStorage.setItem('pg3Data', JSON.stringify(request));
   }
+  logout():void{
+    var user = localStorage.getItem('currentUser');
+    localStorage.removeItem('pg1Data');
+    localStorage.removeItem('pg2Data');
+    localStorage.removeItem('pg3Data');
+    localStorage.removeItem('currentUser');
+  }
 
 }

@@ -2,6 +2,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {jobs} from './job_data'
 import { Account } from '../account';
+import { UsersListService } from '../users-list.service';
 @Component({
   selector: 'app-job-finder-pg1',
   templateUrl: './job-finder-pg1.component.html',
@@ -169,5 +170,11 @@ export class JobFinderPg1Component implements OnInit {
     this.appendOptions();
     
   }
-
+  logout():void{
+    var user = localStorage.getItem('currentUser');
+    localStorage.removeItem('pg1Data');
+    localStorage.removeItem('pg2Data');
+    localStorage.removeItem('pg3Data');
+    localStorage.removeItem('currentUser');
+  }
 }

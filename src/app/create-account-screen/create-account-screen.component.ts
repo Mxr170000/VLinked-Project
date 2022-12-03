@@ -68,4 +68,11 @@ export class CreateAccountScreenComponent implements OnInit {
       this.path="/signup";
     }
   }
+  logout():void{
+    var user = localStorage.getItem('currentUser');
+    localStorage.removeItem('pg1Data');
+    localStorage.removeItem('pg2Data');
+    localStorage.removeItem('pg3Data');
+    localStorage.removeItem('currentUser');
+  }
 }

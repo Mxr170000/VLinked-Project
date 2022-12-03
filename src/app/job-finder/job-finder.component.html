@@ -13,7 +13,7 @@
         <p class="account-name"> Hello {{currentAccount.firstN}} {{currentAccount.lastN.substring(0,1)}}</p>
       </div>
       <div class="px-5  col-sm">
-        <a routerLink="/" class="log-out">LogOut</a>
+        <a (click)="logout()" routerLink="/" class="log-out">LogOut</a>
       </div>
     </div>
 

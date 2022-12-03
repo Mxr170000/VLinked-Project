@@ -6,7 +6,7 @@
         <a routerLink="/resume" class="resume-link" style="text-decoration: none;"> Resume Builder </a>
         <h1 class="account-name"> Hello, {{currentAccount.firstN}} {{currentAccount.lastN.substring(0,1)}}.</h1>
         <nav class="button-location">
-            <a routerLink="/" class="log-out">LogOut</a>
+            <a  (click)="logout()" routerLink="/" class="log-out">LogOut</a>
         </nav>
     </div>
     <!--<div class="search-bar">

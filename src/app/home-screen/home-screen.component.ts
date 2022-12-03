@@ -33,6 +33,7 @@ export class HomeScreenComponent implements OnInit {
       let obj = JSON.parse(localStorage.getItem('appliedJobs')|| '{}');
       this.jobsapplied = obj.appliedjobs;
     }
+
     
     
   }
@@ -57,6 +58,13 @@ export class HomeScreenComponent implements OnInit {
         }
       }
     }
+  }
+  logout():void{
+    var user = localStorage.getItem('currentUser');
+    localStorage.removeItem('pg1Data');
+    localStorage.removeItem('pg2Data');
+    localStorage.removeItem('pg3Data');
+    localStorage.removeItem('currentUser');
   }
 
 }
