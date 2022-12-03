@@ -12,7 +12,7 @@ export class HomeScreenComponent implements OnInit {
   currentAccount: Account = {firstN:"", lastN:"", email:"", password:""};
   suggestedJobsClicked: Boolean = true;
   appliedJobsClicked: Boolean = false;
-  jobsapplied:any;
+  jobsapplied:any = [];
   user:string="";
   constructor(private usersListService : UsersListService) { }
 
@@ -28,9 +28,9 @@ export class HomeScreenComponent implements OnInit {
         }
     }    
     
-    if(localStorage.getItem('appliedJobs')){
-      console.log(localStorage.getItem('appliedJobs'));
-      let obj = JSON.parse(localStorage.getItem('appliedJobs')|| '{}');
+    if(localStorage.getItem(this.user+'appliedJobs')){
+      console.log(localStorage.getItem(this.user+'appliedJobs'));
+      let obj = JSON.parse(localStorage.getItem(this.user+'appliedJobs')|| '{}');
       this.jobsapplied = obj.appliedjobs;
     }
 
@@ -60,11 +60,11 @@ export class HomeScreenComponent implements OnInit {
     }
   }
   logout():void{
-    var user = localStorage.getItem('currentUser');
-    localStorage.removeItem('pg1Data');
-    localStorage.removeItem('pg2Data');
-    localStorage.removeItem('pg3Data');
     localStorage.removeItem('currentUser');
+    localStorage.removeItem(this.user+'pg1Data');
+    localStorage.removeItem(this.user+'pg2Data');
+    localStorage.removeItem(this.user+'pg3Data');
+    localStorage.removeItem(this.user+'currentUser');
   }
 
 }

@@ -133,9 +133,9 @@ export class ResumeBuilderPg4Component implements OnInit {
 
   generatePDF(): void {
     // All the contents required goes here
-    let obj1 = JSON.parse(localStorage.getItem('pg1Data')|| '{}');
-    let obj2 = JSON.parse(localStorage.getItem('pg2Data')|| '{}');
-    let obj3 = JSON.parse(localStorage.getItem('pg3Data')|| '{}');
+    let obj1 = JSON.parse(localStorage.getItem(this.user+'pg1Data')|| '{}');
+    let obj2 = JSON.parse(localStorage.getItem(this.user+'pg2Data')|| '{}');
+    let obj3 = JSON.parse(localStorage.getItem(this.user+'pg3Data')|| '{}');
     let pdfskills:string = "";
     console.log("Testing at peaks");
     console.log(obj3);
@@ -235,11 +235,11 @@ export class ResumeBuilderPg4Component implements OnInit {
       }
   }
   logout():void{
-    var user = localStorage.getItem('currentUser');
-    localStorage.removeItem('pg1Data');
-    localStorage.removeItem('pg2Data');
-    localStorage.removeItem('pg3Data');
     localStorage.removeItem('currentUser');
+    localStorage.removeItem(this.user+'pg1Data');
+    localStorage.removeItem(this.user+'pg2Data');
+    localStorage.removeItem(this.user+'pg3Data');
+    localStorage.removeItem(this.user+'currentUser');
   }
 
 }

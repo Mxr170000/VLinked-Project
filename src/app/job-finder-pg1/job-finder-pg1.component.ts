@@ -35,9 +35,9 @@ export class JobFinderPg1Component implements OnInit {
         }
     }
     
-    if(localStorage.getItem('appliedJobs')){
-      console.log(localStorage.getItem('appliedJobs'));
-      let obj = JSON.parse(localStorage.getItem('appliedJobs')|| '{}');
+    if(localStorage.getItem(this.user+'appliedJobs')){
+      console.log(localStorage.getItem(this.user+'appliedJobs'));
+      let obj = JSON.parse(localStorage.getItem(this.user+'appliedJobs')|| '{}');
       this.appliedJobs = obj.appliedjobs;
     }
     this.activatedRoute.queryParams.subscribe(params => {
@@ -121,7 +121,7 @@ export class JobFinderPg1Component implements OnInit {
   writeData():void{
     var request: any = {};
     request.appliedjobs = this.appliedJobs
-    localStorage.setItem('appliedJobs', JSON.stringify(request));
+    localStorage.setItem(this.user+'appliedJobs', JSON.stringify(request));
   }
   changetoApplied():void{
     const btns = document.querySelectorAll('.to-apply-func');
@@ -171,10 +171,10 @@ export class JobFinderPg1Component implements OnInit {
     
   }
   logout():void{
-    var user = localStorage.getItem('currentUser');
-    localStorage.removeItem('pg1Data');
-    localStorage.removeItem('pg2Data');
-    localStorage.removeItem('pg3Data');
     localStorage.removeItem('currentUser');
+    localStorage.removeItem(this.user+'pg1Data');
+    localStorage.removeItem(this.user+'pg2Data');
+    localStorage.removeItem(this.user+'pg3Data');
+    localStorage.removeItem(this.user+'currentUser');
   }
 }

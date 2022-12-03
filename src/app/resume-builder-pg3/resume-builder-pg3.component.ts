@@ -35,9 +35,9 @@ export class ResumeBuilderPg3Component implements OnInit {
           this.currentAccount = obj[this.user];
         }
     }
-    if(localStorage.getItem('pg3Data')){
-      console.log(localStorage.getItem('pg1Data'));
-      let obj = JSON.parse(localStorage.getItem('pg3Data')|| '{}');
+    if(localStorage.getItem(this.user+'pg3Data')){
+      console.log(localStorage.getItem(this.user+'pg1Data'));
+      let obj = JSON.parse(localStorage.getItem(this.user+'pg3Data')|| '{}');
       this.schoolname = obj.schoolname;
       this.schoolcity = obj.schoolcity;
       this.schoolstate = obj.schoolstate;
@@ -64,14 +64,14 @@ export class ResumeBuilderPg3Component implements OnInit {
     request.schoolcity = (<HTMLInputElement>document.getElementById("schoolcity")).value;
     request.schoolstate = (<HTMLInputElement>document.getElementById("schoolstate")).value;
     request.degree = (<HTMLInputElement>document.getElementById("degree")).value;
-    localStorage.setItem('pg3Data', JSON.stringify(request));
+    localStorage.setItem(this.user+'pg3Data', JSON.stringify(request));
   }
   logout():void{
-    var user = localStorage.getItem('currentUser');
-    localStorage.removeItem('pg1Data');
-    localStorage.removeItem('pg2Data');
-    localStorage.removeItem('pg3Data');
     localStorage.removeItem('currentUser');
+    localStorage.removeItem(this.user+'pg1Data');
+    localStorage.removeItem(this.user+'pg2Data');
+    localStorage.removeItem(this.user+'pg3Data');
+    localStorage.removeItem(this.user+'currentUser');
   }
 
 }

@@ -46,9 +46,9 @@ export class ResumeBuilderPg1Component implements OnInit {
           this.currentAccount = obj[this.user];
         }
     }
-    if(localStorage.getItem('pg1Data')){
-      console.log(localStorage.getItem('pg1Data'));
-      let obj = JSON.parse(localStorage.getItem('pg1Data')|| '{}');
+    if(localStorage.getItem(this.user+'pg1Data')){
+      console.log(localStorage.getItem(this.user+'pg1Data'));
+      let obj = JSON.parse(localStorage.getItem(this.user+'pg1Data')|| '{}');
       this.firstname = obj.firstname;
       this.lastname = obj.lastname;
       this.address = obj.address;
@@ -58,8 +58,6 @@ export class ResumeBuilderPg1Component implements OnInit {
       this.email = obj.email;
       this.phnumber = obj.phnumber;
     }
-    console.log("Sreekar"+this.accounts)
-    console.log(this.accounts)
     // console.log(UsersListService.currentAccount);
     // console.log(UsersListService.accounts);
   }
@@ -85,13 +83,13 @@ export class ResumeBuilderPg1Component implements OnInit {
     request.email = (<HTMLInputElement>document.getElementById("email")).value;
     request.phnumber = (<HTMLInputElement>document.getElementById("phnumber")).value;
     console.log(request);
-    localStorage.setItem('pg1Data', JSON.stringify(request));
+    localStorage.setItem(this.user+'pg1Data', JSON.stringify(request));
   }
   logout():void{
-    var user = localStorage.getItem('currentUser');
-    localStorage.removeItem('pg1Data');
-    localStorage.removeItem('pg2Data');
-    localStorage.removeItem('pg3Data');
     localStorage.removeItem('currentUser');
+    localStorage.removeItem(this.user+'pg1Data');
+    localStorage.removeItem(this.user+'pg2Data');
+    localStorage.removeItem(this.user+'pg3Data');
+    localStorage.removeItem(this.user+'currentUser');
   }
 }
