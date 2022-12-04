@@ -15,6 +15,14 @@ export class CreateAccountScreenComponent implements OnInit {
   password: String="";
   email: String="";
   path: String ="\home";
+
+  specialCharsEmail = /[`!#$%^&*()_+\-=\[\]{};':"\\|,<>\/?~]/;
+  specialCharsAndNumbers = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  hasSCFName: Boolean = false;
+  hasSCLName: Boolean = false;
+  hasSCEmail: Boolean = false;
+  shortPassword:Boolean = false;
+  endingEmail: Boolean = false;
   
   constructor(private usersListService : UsersListService){}
 
@@ -31,7 +39,17 @@ export class CreateAccountScreenComponent implements OnInit {
       this.fieldNotFilled =  true;
     else
       this.fieldNotFilled =  false;
-    if(!this.fieldNotFilled)
+    this.hasSCFName = this.specialCharsAndNumbers.test(<string>this.firstN);
+    if(!this.hasSCFName)
+      this.hasSCFName = /\d/.test(<string>this.firstN);
+    this.hasSCLName = this.specialCharsAndNumbers.test(<string>this.lastN);
+    if(!this.hasSCLName)
+      this.hasSCLName = /\d/.test(<string>this.lastN);
+    this.hasSCEmail = this.specialCharsEmail.test(<string>this.email);
+    let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+    this.endingEmail = !regex.test(<string>this.email);
+    this.shortPassword = this.password.length < 8;
+    if(!this.fieldNotFilled && !this.hasSCEmail && !this.hasSCFName && !this.endingEmail && !this.hasSCLName && !this.shortPassword)
     {
       var userCount = 1;
       var obj:any = {};

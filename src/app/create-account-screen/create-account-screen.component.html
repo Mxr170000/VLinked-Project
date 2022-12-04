@@ -8,7 +8,7 @@
     </div>
     <div class="right-side">
         <h1 class="title"> Create Account </h1>
-        <label for="exampleFormControlInput1" class="form-label" style="padding-left: 30%;  padding-top: 4%; font-size: 20px;">First Name</label>
+        <label for="exampleFormControlInput1" class="form-label" style="padding-left: 30%;  padding-top: 2.5%; font-size: 20px;">First Name</label>
         <div style="padding-left: 30%; width: 61%; padding-top: 5px;" >
             <input type="text" class="form-control" style=" width: 100%; height: 40px; font-size: 16px; font-style: italic;" id="first-name" placeholder="John">
         </div>
@@ -24,13 +24,30 @@
         <div style="padding-left: 30%; width: 61%; padding-top: 5px;" >
             <input type="password" class="form-control" style=" width: 100%; height: 40px; font-size: 16px; font-style: italic;" id="password" placeholder="*********">
         </div>
-        <div style="padding-left: 30%; width: 61%; padding-top: 30px;" >
+        <p style="padding-left: 30%; width: 61%; padding-top: 5px;font-weight: 200; font-style:italic; font-size:14px;">Must be at least 8 characters</p>        
+        <div style="padding-left: 30%; width: 61%; padding-top: 15px;" >
             <a routerLink="{{path}}"><button class="home-button" (click)="addAccount()"> Create Account </button></a>
         </div>
         <div style="display: flex; flex-direction: row; padding-left: 30%;">
             <p style="font-weight: 200; font-style:italic; font-size:14px;">Already have an account?</p>
             <a routerLink="/login" style="margin: left; font-weight: 600; font-style:italic; font-size:14px; padding-left: 5px;"> Log In </a>
         </div>   
-        <div class="error-account" *ngIf="fieldNotFilled" > All Fields Have Not Been Filled. </div>        
+        
+        <div class="error-account" *ngIf="fieldNotFilled; else EFName" > All Fields Have Not Been Filled. </div>
+        <ng-template #EFName>
+            <div class="error-account" *ngIf="hasSCFName; else ELName" > First Name Has Invalid Special And/Or Number Characters. </div> 
+        </ng-template>
+        <ng-template #ELName>
+            <div class="error-account" *ngIf="hasSCLName; else EEmail" > Last Name Has Invalid Special And/Or Number Characters. </div>
+        </ng-template>
+        <ng-template #EEmail>
+            <div class="error-account" *ngIf="hasSCEmail; else EEmailTwo" > Email Has Invalid Special Characters. </div>
+        </ng-template>
+        <ng-template #EEmailTwo>
+            <div class="error-account" *ngIf="endingEmail; else EPassword" > Not A Valid Email, Missing Domain. </div>
+        </ng-template>
+        <ng-template #EPassword>
+            <div class="error-account" *ngIf="shortPassword" > Password Length Is Not At Least 8 Characers. </div>   
+        </ng-template>           
     </div>
 </div>
