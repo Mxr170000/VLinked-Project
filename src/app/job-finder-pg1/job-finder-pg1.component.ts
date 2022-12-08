@@ -53,7 +53,7 @@ export class JobFinderPg1Component implements OnInit {
     for (var job of jobs){
       if ((this.location=="" || job.location.toLowerCase().replace(/\s/g, '') == this.location) && (this.industry=="" || job.industry.toLowerCase().replace(/\s/g, '') == this.industry)){
         this.count+=1;
-        var text = "<div class='card mt-3 to-display-func' value='"+job.id+"' style='width: 18rem;'><div class='card-body mt-4 mr-1'><h5 class='card-title'>"+job.title+"</h5><p class='card-text'>at "+job.company +"</p><p class='card-text'>"+job.location+"</p><p class='card-text'>Date Posted: "+job.date+"</p><p class='card-text'> Number of Veterans Hired: "+job.num_veterans_hired+"</p><p class='card-text'>Experience Required(in years): "+job.experience+"</p><p class='card-text'>"+job.short_description+"</p>"
+        var text = "<div class='card mt-3 to-display-func' value='"+job.id+"' style='width: 18rem;'><div class='card-body mt-4 mr-1'><h5 class='card-title'>"+job.title+"</h5><p class='card-text'>at "+job.company +"</p><p class='card-text'>"+job.location+"</p><p class='card-text'>Date Posted: "+job.date+"</p><p class='card-text'> Number of Veterans Hired: "+job.num_veterans_hired+"</p><p class='card-text'>Experience Required(in years): "+job.experience+"</p><p class='card-text'>"+job.short_description+"</p><p class='card-text' style='color:red;'>Apply with default Resume or attach New Resume</p><input type='file' data-buttonText='Attach' class='file-upload' onchange='console.log(event.target.files)'>"
         if (this.appliedJobs.includes(job.id)){
             text += "<button type='button' class='btn btn-secondary'>Applied</button>"
         }
@@ -85,7 +85,7 @@ export class JobFinderPg1Component implements OnInit {
         console.log(cards[i].getAttribute('value'));
         job = x.findId(String(cards[i].getAttribute('value')));
         (<HTMLInputElement>document.getElementById("job_desc")).innerHTML = "";
-        var text = "<div class='card-header'><h5 class='card-title'>"+job.title+"</h5><p class='card-text'>at "+job.company+"</p><p class='card-text'>"+job.location+"</p><div class='text-end'>";
+        var text = "<div class='card-header'><h5 class='card-title'>"+job.title+"</h5><p class='card-text'>at "+job.company+"</p><p class='card-text'>"+job.location+"</p><div class='text-end'> <p class='card-text' style='color:red;'>Apply with default Resume or attach New Resume</p><input type='file' data-buttonText='Attach' class='file-upload' onchange='console.log(event.target.files)'>";
         if (x.appliedJobs.includes(job.id)){
           text += "<button type='button' class='btn btn-secondary'>Applied</button>";
         }

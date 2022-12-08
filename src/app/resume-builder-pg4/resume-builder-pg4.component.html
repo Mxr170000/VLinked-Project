@@ -23,7 +23,11 @@
     <div class="header__filename">
     </div>
     <div class="header__pdf-controls">
-      <button (click)="clickEvent()" type="button" class="btn header__btn btn-primary" id="liveToastBtn">Add to Profile</button>
+      <button routerLink="/resume1"  type="button" class="btn header__btn btn-primary" id="liveToastBtn">Edit Basic Info</button>
+      <button routerLink="/resume2" type="button" class="btn header__btn btn-primary" id="liveToastBtn">Edit Experience & skills</button>
+      <button routerLink="/resume3" type="button" class="btn header__btn btn-primary" id="liveToastBtn">Edit Education</button>
+
+      <button (click)="clickEvent()" type="button" class="btn header__btn btn-primary" id="liveToastBtn">Use as Default</button>
       
       <button (click)="download()" class="header__btn" >download</button>
     </div>
