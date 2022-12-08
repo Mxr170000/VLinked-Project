@@ -55,7 +55,7 @@ export class JobFinderPg1Component implements OnInit {
         this.count+=1;
         var text = "<div class='card mt-3 to-display-func' value='"+job.id+"' style='width: 18rem;'><div class='card-body mt-4 mr-1'><h5 class='card-title'>"+job.title+"</h5><p class='card-text'>at "+job.company +"</p><p class='card-text'>"+job.location+"</p><p class='card-text'>Date Posted: "+job.date+"</p><p class='card-text'> Number of Veterans Hired: "+job.num_veterans_hired+"</p><p class='card-text'>Experience Required(in years): "+job.experience+"</p><p class='card-text'>"+job.short_description+"</p><p class='card-text' style='color:red;'>Apply with default Resume or attach New Resume</p><input type='file' data-buttonText='Attach' class='file-upload' onchange='console.log(event.target.files)'>"
         if (this.appliedJobs.includes(job.id)){
-            text += "<button type='button' class='btn btn-secondary'>Applied</button>"
+            text += "<button type='button' value='"+job.id+"' class='btn btn-secondary to-apply-func'>Withdraw</button>"
         }
         else{
             text += "<button type='button' value='"+job.id+"' class='btn btn-primary to-apply-func'>Apply</button>" 
@@ -70,12 +70,25 @@ export class JobFinderPg1Component implements OnInit {
     const btns = document.querySelectorAll('.to-apply-func');
     for (let i = 0; i < btns.length; i++) {
       btns[i].addEventListener('click', function (e) {
-          btns[i].classList.remove('btn-primary');
-          btns[i].classList.remove('to-apply-func');
-          btns[i].classList.add('btn-secondary');
-          btns[i].innerHTML="Applied";
-          x.appliedJobs.push(btns[i].getAttribute('value'));
-          x.writeData();
+          if (btns[i].innerHTML === "Apply"){
+                btns[i].classList.remove('btn-primary');
+                //btns[i].classList.remove('to-apply-func');
+                btns[i].classList.add('btn-secondary');
+                btns[i].innerHTML="Withdraw";
+                x.appliedJobs.push(btns[i].getAttribute('value'));
+                x.writeData();
+                x.changetoApplied();  
+              }
+              else {
+                console.log('aaaaaa');
+                btns[i].classList.remove('btn-secondary');
+                btns[i].classList.add('btn-primary');
+                btns[i].innerHTML="Apply";
+                var newarr = x.appliedJobs.filter(function(a:any){return a !== btns[i].getAttribute('value')}) ;
+                x.appliedJobs = newarr;
+                x.writeData();
+                x.changetoApply();  
+              }
       });
     };
     const cards = document.querySelectorAll('.to-display-func');
@@ -87,7 +100,7 @@ export class JobFinderPg1Component implements OnInit {
         (<HTMLInputElement>document.getElementById("job_desc")).innerHTML = "";
         var text = "<div class='card-header'><h5 class='card-title'>"+job.title+"</h5><p class='card-text'>at "+job.company+"</p><p class='card-text'>"+job.location+"</p><div class='text-end'> <p class='card-text' style='color:red;'>Apply with default Resume or attach New Resume</p><input type='file' data-buttonText='Attach' class='file-upload' onchange='console.log(event.target.files)'>";
         if (x.appliedJobs.includes(job.id)){
-          text += "<button type='button' class='btn btn-secondary'>Applied</button>";
+          text += "<button type='button' value='"+job.id+"' class='btn btn-secondary to-apply-func'>Withdraw</button>";
         }
         else{
               text += "<button type='button' value='"+job.id+"' class='btn btn-primary to-apply-func'>Apply</button>" ;
@@ -97,13 +110,25 @@ export class JobFinderPg1Component implements OnInit {
         const btns = (<HTMLInputElement>document.getElementById("job_desc")).querySelectorAll('.to-apply-func');
         for (let i = 0; i < btns.length; i++) {
           btns[i].addEventListener('click', function (e) {
-              btns[i].classList.remove('btn-primary');
-              btns[i].classList.remove('to-apply-func');
-              btns[i].classList.add('btn-secondary');
-              btns[i].innerHTML="Applied";
-              x.appliedJobs.push(btns[i].getAttribute('value'));
-              x.writeData();
-              x.changetoApplied();
+              if (btns[i].innerHTML === "Apply"){
+                btns[i].classList.remove('btn-primary');
+                //btns[i].classList.remove('to-apply-func');
+                btns[i].classList.add('btn-secondary');
+                btns[i].innerHTML="Withdraw";
+                x.appliedJobs.push(btns[i].getAttribute('value'));
+                x.writeData();
+                x.changetoApplied();  
+              }
+              else {
+                console.log('aaaaaa');
+                btns[i].classList.remove('btn-secondary');
+                btns[i].classList.add('btn-primary');
+                btns[i].innerHTML="Apply";
+                var newarr = x.appliedJobs.filter(function(a:any){return a !== btns[i].getAttribute('value')}) ;
+                x.appliedJobs = newarr;
+                x.writeData();
+                x.changetoApply();  
+              }
           });
         };
       });
@@ -128,13 +153,28 @@ export class JobFinderPg1Component implements OnInit {
     for (let i = 0; i < btns.length; i++) {
       if(this.appliedJobs.includes(btns[i].getAttribute('value'))) {
           btns[i].classList.remove('btn-primary');
-          btns[i].classList.remove('to-apply-func');
+          //btns[i].classList.remove('to-apply-func');
           btns[i].classList.add('btn-secondary');
-          btns[i].innerHTML="Applied";
+          btns[i].innerHTML="Withdraw";
+      };
+    };
+
+  }
+  changetoApply():void{
+    const btns = document.querySelectorAll('.to-apply-func');
+    for (let i = 0; i < btns.length; i++) {
+      if(this.appliedJobs.includes(btns[i].getAttribute('value'))) {
+          btns[i].classList.remove('btn-primary');
+          btns[i].classList.add('btn-secondary');
+          btns[i].innerHTML="Withdraw";
+      }
+      else{
+          btns[i].classList.remove('btn-secondary');
+          btns[i].classList.add('btn-primary');
+          btns[i].innerHTML="Apply";
       };
     };
   }
-
   sortByDate():void{
     if (this.sorta==true){
       jobs.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
