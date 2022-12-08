@@ -21,6 +21,7 @@ import { ResumeBuilderPg4Component } from './resume-builder-pg4/resume-builder-p
 import { JobFinderComponent } from './job-finder/job-finder.component';
 import { PdfViewerModule } from "ng2-pdf-viewer";
 import { JobFinderPg1Component } from './job-finder-pg1/job-finder-pg1.component';
+import { AccountScreenComponent } from './account-screen/account-screen.component';
 
 
 
@@ -38,6 +39,7 @@ import { JobFinderPg1Component } from './job-finder-pg1/job-finder-pg1.component
     ResumeBuilderPg4Component,
     JobFinderComponent,
     JobFinderPg1Component,
+    AccountScreenComponent,
   ],
   imports: [
     BrowserModule,

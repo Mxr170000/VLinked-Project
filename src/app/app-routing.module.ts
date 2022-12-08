@@ -11,6 +11,7 @@ import { ResumeBuilderPg3Component } from './resume-builder-pg3/resume-builder-p
 import { ResumeBuilderPg4Component } from './resume-builder-pg4/resume-builder-pg4.component';
 import { JobFinderComponent } from './job-finder/job-finder.component';
 import { JobFinderPg1Component } from './job-finder-pg1/job-finder-pg1.component';
+import { AccountScreenComponent } from './account-screen/account-screen.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'resume3', component:ResumeBuilderPg3Component},
   { path: 'resume4', component:ResumeBuilderPg4Component},
   { path: 'job1', component:JobFinderComponent},
-  { path: 'job2', component:JobFinderPg1Component}
+  { path: 'job2', component:JobFinderPg1Component},
+  { path: 'account', component:AccountScreenComponent}
 ];
 
 @NgModule({

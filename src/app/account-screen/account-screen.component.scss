@@ -1,0 +1,111 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    padding-right: -100px;
+    margin-left: 8px;
+    margin-top: 8px;
+    height: 100vh;
+  }
+  
+  .header {
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 2px 2px -2px gray;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 8px;
+  }
+
+  .trade-mark-blue {
+    font-size: 32px;
+    font-weight: 400;
+    color: #3563e9;
+  }
+  .trade-mark-green {
+    font-size: 32px;
+    font-weight: 400;
+    color: #62b544;
+    margin-left: 3.5%;
+  }
+  .progress-text {
+    font-size: 28px;
+    font-weight: 400;
+    color: black;
+  }
+  .tab-text {
+    font-size: 32px;
+    font-weight: 600;
+    color: black;
+  }
+  .account-name {
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #3563e9;
+    padding-left: 22%;
+  }
+
+  // Anchors
+.jobs-link {
+    color: black;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 3px;
+    margin-left: 30%;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .resume-link {
+    color: black;
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 3px;
+    margin-left: 40px;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  // Navigation
+.button-location {
+    padding-top: 7px;
+    padding-left: 3%;
+  }
+
+  // Anchor
+.log-out{
+    color: black;
+    font-style: italic;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .progress-text {
+    font-size: 28px;
+    font-weight: 400;
+    color: black;
+  }
+
+  .bottom-text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  // Button
+.home-button{
+    background-color: #3563E9;
+    color: #ffffff;
+    border-color: #3563E9;
+    margin: auto;
+    width: 103%;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}

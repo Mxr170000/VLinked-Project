@@ -1,0 +1,35 @@
+<div class="body">
+    <div class="header">
+        <h1 routerLink="/home" class="trade-mark-green"> V </h1>
+        <h1 routerLink="/home" class="trade-mark-blue"> Linked </h1>
+        <a routerLink="/job1" class="jobs-link" style="text-decoration: none;"> Jobs </a>
+        <a routerLink="/resume" class="resume-link" style="text-decoration: none;"> Resume Builder </a>
+        <a style="  padding-left: 22%; width: 500px;" routerLink="/account"><h1 class="account-name"> Hello, {{currentAccount.firstN}} {{currentAccount.lastN.substring(0,1)}}.</h1></a>
+        <nav class="button-location">
+            <a  (click)="logout()" routerLink="/" class="log-out">LogOut</a>
+        </nav>
+    </div>
+    <div class="bottom-text">
+        <h1 class="progress-text" style="padding-top: 30px;"> Account Information </h1>
+        <label for="exampleFormControlInput1" class="form-label" style="padding-top: 2.5%; font-size: 20px;">First Name</label>
+        <div style="padding-left: 40%; width: 74%; padding-top: 5px;" >
+            <input type="text" class="form-control" style=" width: 60%; height: 40px; font-size: 16px; font-style: italic;" id="first-name" placeholder="{{currentAccount.firstN}}">
+        </div>
+        <label for="exampleFormControlInput1" class="form-label" style="padding-top: 25px; font-size: 20px;">Last Name</label>
+        <div style="padding-left: 40%; width: 74%; padding-top: 5px;" >
+            <input type="text" class="form-control" style=" width: 60%; height: 40px; font-size: 16px; font-style: italic;" id="last-name" placeholder="{{currentAccount.lastN}}">
+        </div>
+        <label for="exampleFormControlInput1" class="form-label" style="padding-top: 25px; font-size: 20px;">Email</label>
+        <div style="padding-left: 40%; width: 74%; padding-top: 5px;" >
+            <input type="text" class="form-control" style=" width: 60%; height: 40px; font-size: 16px; font-style: italic;" id="email" placeholder="{{currentAccount.email}}">
+        </div>
+        <label for="exampleFormControlInput1" class="form-label" style="font-size: 20px; padding-top: 25px;">Password</label>
+        <div style="padding-left: 40%; width: 74%; padding-top: 5px;" >
+            <input type="password" class="form-control" style=" width: 60%; height: 40px; font-size: 16px; font-style: italic;" id="password" placeholder="{{currentAccount.lastN}}">
+        </div>
+        <p style="padding-left: 30%; width: 61%; padding-top: 5px;font-weight: 200; font-style:italic; font-size:14px;">Must be at least 8 characters</p>
+        <div style="padding-left: 40%; width: 60%; padding-top: 15px;" >
+            <button class="home-button"> Save </button>
+        </div>
+    </div>
+</div>
