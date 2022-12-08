@@ -9,6 +9,13 @@ import { UsersListService } from '../users-list.service';
 })
 export class ResumeBuilderPg3Component implements OnInit {
 
+  eSchool: boolean = false;
+  eCity: boolean = false;
+  eState: boolean = false;
+  eEmpty: boolean = false;
+  specialChars = /[`!@#$%^*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  pathTwo: string = "/resume4";
+
   currentAccount: Account = {firstN:"", lastN:"", email:"", password:""};
   suggestedJobsClicked: Boolean = true;
   appliedJobsClicked: Boolean = false;
@@ -64,7 +71,34 @@ export class ResumeBuilderPg3Component implements OnInit {
     request.schoolcity = (<HTMLInputElement>document.getElementById("schoolcity")).value;
     request.schoolstate = (<HTMLInputElement>document.getElementById("schoolstate")).value;
     request.degree = (<HTMLInputElement>document.getElementById("degree")).value;
+
+    if((<HTMLInputElement>document.getElementById("schoolname")).value.length == 0 || (<HTMLInputElement>document.getElementById("schoolcity")).value.length == 0
+     || (<HTMLInputElement>document.getElementById("schoolstate")).value.length == 0)
+      this.eEmpty = true;
+    else
+      this.eEmpty = false;
+
+  this.eSchool = this.specialChars.test((<HTMLInputElement>document.getElementById("schoolname")).value);
+  if(!this.eSchool)
+    this.eSchool = /\d/.test((<HTMLInputElement>document.getElementById("schoolname")).value);
+
+  this.eCity = this.specialChars.test((<HTMLInputElement>document.getElementById("schoolcity")).value);  
+  if(!this.eCity)
+    this.eCity = /\d/.test((<HTMLInputElement>document.getElementById("schoolcity")).value);
+  
+  this.eState = this.specialChars.test((<HTMLInputElement>document.getElementById("schoolstate")).value);  
+  if(!this.eCity)
+    this.eCity = /\d/.test((<HTMLInputElement>document.getElementById("schoolstate")).value);
+
+  if(!this.eCity && !this.eSchool && !this.eState && !this.eEmpty)
+  {
+    this.pathTwo = "/resume4";
     localStorage.setItem(this.user+'pg3Data', JSON.stringify(request));
+  }
+  else{
+    this.pathTwo = "/resume3";
+  }
+
   }
   logout():void{
     localStorage.removeItem('currentUser');

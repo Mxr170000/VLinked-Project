@@ -9,6 +9,12 @@ import { UsersListService } from '../users-list.service';
 })
 export class ResumeBuilderPg2Component implements OnInit {
 
+  eEm: boolean = false;
+  eJob: boolean = false;
+  eEmpty: boolean = false;
+  specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  pathTwo: string = "/resume3";
+
   currentAccount: Account = {firstN:"", lastN:"", email:"", password:""};
   suggestedJobsClicked: Boolean = true;
   appliedJobsClicked: Boolean = false;
@@ -133,8 +139,31 @@ export class ResumeBuilderPg2Component implements OnInit {
     request.employer = (<HTMLInputElement>document.getElementById("employer")).value;
     request.jobtitle = (<HTMLInputElement>document.getElementById("jobtitle")).value;
     request.activeOptions = [...this.activeOptions];
-    console.log(request);
-    localStorage.setItem(this.user+'pg2Data', JSON.stringify(request));
+
+
+    if((<HTMLInputElement>document.getElementById("employer")).value.length == 0 || (<HTMLInputElement>document.getElementById("jobtitle")).value.length == 0)
+      this.eEmpty = true;
+    else
+      this.eEmpty = false;
+
+    this.eJob = this.specialChars.test((<HTMLInputElement>document.getElementById("employer")).value);
+    if(!this.eJob)
+      this.eJob = /\d/.test((<HTMLInputElement>document.getElementById("employer")).value);
+
+    this.eEm = this.specialChars.test((<HTMLInputElement>document.getElementById("jobtitle")).value);  
+    if(!this.eEm)
+      this.eEm = /\d/.test((<HTMLInputElement>document.getElementById("jobtitle")).value);
+
+    if(!this.eEmpty && !this.eJob && !this.eEm)
+    {
+      console.log(request);
+      localStorage.setItem(this.user+'pg2Data', JSON.stringify(request));
+      this.pathTwo = "/resume3";
+    }
+    else
+    {
+      this.pathTwo = "/resume2";
+    }
   }
   logout():void{
     localStorage.removeItem('currentUser');

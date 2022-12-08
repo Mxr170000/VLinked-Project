@@ -26,10 +26,16 @@
       <div class="form-outline">
         <input type="text" value={{firstname}}  placeholder="First Name" id="firstname" class="form-control" />
       </div>
+      <div style= "font-size: 16px; padding-top: 5px; color: red; font-weight: bold; margin-bottom: -25px;" *ngIf="eFN">
+        Invalid First Name
+      </div>
     </div>
     <div class="col">
       <div class="form-outline">
         <input type="text" value={{lastname}} placeholder="Last Name" id="lastname" class="form-control" />
+      </div>
+      <div style= "font-size: 16px; padding-top: 5px; color: red; font-weight: bold; margin-bottom: -25px;" *ngIf="eLN">
+        Invalid Last Name
       </div>
     </div>
   </div>
@@ -39,15 +45,24 @@
   <div class=" py-4 form-outline mb-4">
     <input type="text" value={{address}} placeholder="Address" id="address" class="form-control" />
   </div>
+  <div style= "font-size: 16px; margin-top: -40px; color: red; font-weight: bold; margin-bottom: -0px;" *ngIf="eAd">
+    Invalid Address
+  </div>
   <div class="py-4 row mb-4">
     <div class="col">
       <div class="form-outline">
         <input type="text" value={{city}} placeholder="City" id="city" class="form-control" />
       </div>
+      <div style= "font-size: 16px; margin-top: -0px; color: red; font-weight: bold; margin-bottom: -25px;" *ngIf="eCity">
+        Invalid City
+      </div>
     </div>
     <div class="col">
       <div class="form-outline">
         <input type="text" value={{zipcode}} placeholder="Zip Code" id="zipcode" class="form-control" />
+      </div>
+      <div style= "font-size: 16px; margin-top: -0px; color: red; font-weight: bold; margin-bottom: -25px;" *ngIf="eZP">
+        Invalid Zip Code. Only 5 digits allowed
       </div>
     </div>
     <div class="col">
@@ -58,6 +73,7 @@
         <option value="india">India</option>
         <option value="russia">Russia</option>
       </select>
+      <p style="font-weight: 200; font-style:italic; font-size:14px;">Select Country of Residence</p>
       <!-- <div class="form-outline">
         <input type="text" placeholder="Country" id="country" class="form-control" />
       </div> -->
@@ -69,10 +85,16 @@
       <div class="form-outline">
         <input type="text" value={{email}} placeholder="Email" id="email" class="form-control" />
       </div>
+      <div style= "font-size: 16px; margin-top: -0px; color: red; font-weight: bold; margin-bottom: -25px;" *ngIf="eEm">
+        Invalid Email
+      </div>
     </div>
     <div class="col">
       <div class="form-outline">
         <input type="text" value={{phnumber}} placeholder="Phone Number" id="phnumber" class="form-control" />
+      </div>
+      <div style= "font-size: 16px; margin-top: -0px; color: red; font-weight: bold; margin-bottom: -25px;" *ngIf="ePHN">
+        Invalid Phone Number. Only Numbers Are Allowed (ex: 123456789)
       </div>
     </div>
   </div>
@@ -85,7 +107,10 @@
     </div>
     <div class="col">
       <div class="form-outline">
-        <button (click)="readData('pg1')" routerLink="/resume2" type="button" class="btn btn-warning btn-lg px-4 gap-3">Save & Next</button>
+        <a routerLink="{{pathTwo}}" ><button (click)="readData('pg1')" type="button" class="btn btn-warning btn-lg px-4 gap-3">Save & Next</button></a>
+      </div>
+      <div style= "font-size: 16px; margin-top: 0px; color: red; font-weight: bold; margin-bottom: -25px;" *ngIf="eEmpty">
+        An Input Field is empty.
       </div>
     </div>
   </div>

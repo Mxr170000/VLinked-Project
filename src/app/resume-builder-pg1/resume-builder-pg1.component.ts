@@ -9,6 +9,7 @@ import { UsersListService } from '../users-list.service';
 })
 export class ResumeBuilderPg1Component implements OnInit {
 
+  specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
   currentAccount: Account = {firstN:"", lastN:"", email:"", password:""};
   suggestedJobsClicked: Boolean = true;
   appliedJobsClicked: Boolean = false;
@@ -24,6 +25,21 @@ export class ResumeBuilderPg1Component implements OnInit {
   email : string = "";
   phnumber : string = "";  
   user:string;
+  pathTwo: string="/resume2"
+
+  eEmpty: boolean = false;
+  eFN: boolean = false;
+  eLN: boolean = false;
+  eAd: boolean = false;
+  eCity: boolean = false;
+  eZP: boolean = false;
+  eCo: boolean = false;
+  eEm: boolean = false;
+  ePHN: boolean = false;
+
+
+
+
   constructor(private usersListService : UsersListService){
     this.accounts = this.usersListService.accounts
   }
@@ -73,6 +89,8 @@ export class ResumeBuilderPg1Component implements OnInit {
   readData(value: string):void{
     console.log("Read value on page1")
     console.log(value);
+    console.log("First Name: " + (<HTMLInputElement>document.getElementById("firstname")).value);
+    console.log("FN length: " + (<HTMLInputElement>document.getElementById("firstname")).value.length);
     var request: any = {};
     request.firstname = (<HTMLInputElement>document.getElementById("firstname")).value;
     request.lastname = (<HTMLInputElement>document.getElementById("lastname")).value;
@@ -82,8 +100,59 @@ export class ResumeBuilderPg1Component implements OnInit {
     request.country = (<HTMLInputElement>document.getElementById("country")).value;
     request.email = (<HTMLInputElement>document.getElementById("email")).value;
     request.phnumber = (<HTMLInputElement>document.getElementById("phnumber")).value;
-    console.log(request);
-    localStorage.setItem(this.user+'pg1Data', JSON.stringify(request));
+
+    if((<HTMLInputElement>document.getElementById("firstname")).value.length == 0 || (<HTMLInputElement>document.getElementById("lastname")).value.length == 0  
+    || (<HTMLInputElement>document.getElementById("address")).value.length == 0  || (<HTMLInputElement>document.getElementById("city")).value.length == 0  || 
+    request.zipcode.length == 0  || request.country.length == 0  || request.email.length == 0  || request.phnumber.length == 0 )
+      this.eEmpty = true;
+    else
+      this.eEmpty = false;
+    
+    
+    
+    this.eFN = this.specialChars.test((<HTMLInputElement>document.getElementById("firstname")).value);
+    if(!this.eFN)
+      this.eFN = /\d/.test((<HTMLInputElement>document.getElementById("firstname")).value);
+
+    this.eLN = this.specialChars.test((<HTMLInputElement>document.getElementById("lastname")).value);  
+    if(!this.eLN)
+      this.eLN = /\d/.test((<HTMLInputElement>document.getElementById("lastname")).value);
+
+    this.eAd = this.specialChars.test((<HTMLInputElement>document.getElementById("address")).value);
+
+    this.eCity = this.specialChars.test((<HTMLInputElement>document.getElementById("city")).value);
+    if(!this.eCity)
+      this.eCity = /\d/.test((<HTMLInputElement>document.getElementById("city")).value);
+
+    this.eZP = !/^[0-9]+$/.test((<HTMLInputElement>document.getElementById("zipcode")).value);
+    if(!this.eZP)
+      this.eZP = (<HTMLInputElement>document.getElementById("zipcode")).value.length != 5;
+
+    this.ePHN = !/^[0-9]+$/.test((<HTMLInputElement>document.getElementById("phnumber")).value);
+    if(!this.ePHN)
+    {
+      if((<HTMLInputElement>document.getElementById("phnumber")).value.length != 9)
+        this.ePHN = true;
+    }
+
+
+    console.log("Length: " + (<HTMLInputElement>document.getElementById("phnumber")).value.length);
+    
+    let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+    this.eEm = !regex.test((<HTMLInputElement>document.getElementById("email")).value);
+    console.log("Current: " + request);
+    if(!this.eEmpty && !this.eAd && !this.eCity && !this.eCo && !this.eEm && !this.eFN && !this.eLN && !this.ePHN && !this.eEm)
+    {
+      this.pathTwo = "/resume2";
+
+      localStorage.setItem(this.user+'pg1Data', JSON.stringify(request));
+    }
+    else
+    {
+      console.log("I'm happening");
+      this.pathTwo = "/resume1";
+    }
+
   }
   logout():void{
     localStorage.removeItem('currentUser');

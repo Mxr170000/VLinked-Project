@@ -25,10 +25,16 @@
       <div class="form-outline">
         <input type="text" value={{employer}} placeholder="Employer" id="employer" class="form-control" />
       </div>
+      <div style= "font-size: 16px; margin-top: -0px; color: red; font-weight: bold; margin-bottom: -25px;" *ngIf="eEm">
+        Invalid Employer
+      </div>
     </div>
     <div class="col">
       <div class="form-outline">
         <input type="text" value={{jobtitle}} placeholder="Job Title" id="jobtitle" class="form-control" />
+      </div>
+      <div style= "font-size: 16px; margin-top: -0px; color: red; font-weight: bold; margin-bottom: -25px;" *ngIf="eJob">
+        Invalid Job Title
       </div>
     </div>
   </div>
@@ -41,6 +47,7 @@
         </ul>
       </div>
     </div>
+    <p style="font-weight: 200; font-style:italic; font-size:14px;">Skills That Have Been Added</p>
   </div>
   <div class="col-lg-6 mb-4  align-items-stretch">
     <div class="card">
@@ -57,8 +64,11 @@
         <div class="col" id="skilllist">
             
         </div>
+
       </div>
+
     </div>
+    <p style="font-weight: 200; font-style:italic; font-size:14px;">Select Skills To Add</p>
   </div>
 </div>
 
@@ -75,7 +85,10 @@
     </div>
     <div class="col">
       <div class="form-outline">
-        <button (click)="readData('pg2')" routerLink="/resume3" type="button" class="btn btn-warning btn-lg px-4 gap-3">Save & Next</button>
+        <a routerLink="{{pathTwo}}"><button (click)="readData('pg2')"  type="button" class="btn btn-warning btn-lg px-4 gap-3">Save & Next</button></a>
+      </div>
+      <div style= "font-size: 16px; margin-top: 0px; color: red; font-weight: bold; margin-bottom: -25px;" *ngIf="eEmpty">
+        An Input Field is empty.
       </div>
     </div>
   </div>
